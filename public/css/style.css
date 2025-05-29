@@ -38,9 +38,13 @@ main {
     flex-direction: column;
     color: #3C474D;
     font-size: large;
-    font-weight: bold;
-    margin-right: 15px;
+    font-weight: bold;    
 }
+
+
+/* .row [class*='col-']:not(:last-child) {
+    margin-right: 5px;
+} */
 
 .form-control {
     height: 60px;
@@ -62,6 +66,28 @@ main {
 
 .row {
     padding-left: 15px;
+    padding-right: 15px;
+}
+
+.list-radio {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.radio-option input[type='radio'] {
+    width: 20px;
+    height: 20px;
+}
+
+input[type='radio']:checked {
+    accent-color: #3C474D;
+    border-color: #3C474D;
 }
 
 /*LOGIN*/
@@ -96,11 +122,36 @@ main {
     box-shadow: 1px 1px 5px;
 }
 
+.btn {    
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    color: #3C474D;
+    font-size: large;
+    border-style: hidden;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    align-self: center;
+    box-shadow: 1px 1px 5px;
+}
+
+.btnCancelar {
+    background-color: #E8A968;
+    float: left;
+    margin-left: 25%;
+}
+
+.btnSalvar {
+    background-color: #68C8E8;
+    float: right;
+    margin-right: 25%;
+}
+
 /*CADASTRO*/
 form label {
     margin-bottom: 5px;
     align-self: flex-start;  
-    word-wrap: break-word; 
 }
 
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
@@ -110,6 +161,10 @@ form label {
 
     .login, form {
         width: 95%;    
+    }
+
+    form label {
+        word-wrap: break-word; 
     }
 }
 
@@ -131,6 +186,10 @@ form label {
     .login, form {
         width: 60%;
     }
+
+    form label {
+        word-wrap: unset; 
+    }
 }
 
 @media only screen and (max-width: 600px) {/*TABLETS*/    
@@ -151,4 +210,8 @@ form label {
     .login, form {
         width: 100%;    
     } 
+
+    form label { 
+        word-wrap: break-word; 
+    }
 }
