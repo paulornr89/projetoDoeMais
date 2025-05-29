@@ -1,5 +1,154 @@
+/*CONFIGURACOES BASICAS*/
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+[class*="col-"] {
+    float: left;
+}  
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+body {
+    background-color: #68C8E8;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    color: #3C474D;
+    height: 100vh;    
+}
+
+main {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    height: 100vh;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+    color: #3C474D;
+    font-size: large;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.form-control {
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid #68C8E8;
+    color: #3C474D;
+    font-weight: 300;
+    font-size: large;
+    padding-left: 10px;
+    outline: none;
+}
+
+.form-control:hover {
+    border: 1px solid #3C474D;
+}
+.form-control:focus {
+    border: 1px solid #3C474D;
+}
+
+.row {
+    padding-left: 15px;
+}
+
+/*LOGIN*/
+.login, form {
+    background-color: #68E8C2;
+    border-radius: 5px;    
+    text-align: center;
+    padding: 20px 0 20px 0;
+    box-shadow: 3px 3px 10px;
+}
+
+.login .form-group input + span {
+    align-self: flex-end;
+}
+
+.login .form-group .btnLogin + span {
+    align-self: center;
+}
+
+.btnLogin {
+    width: 30%;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #68C8E8;
+    color: #3C474D;
+    font-size: medium;
+    border-style: hidden;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    align-self: center;
+    box-shadow: 1px 1px 5px;
+}
+
+/*CADASTRO*/
+form label {
+    margin-bottom: 5px;
+    align-self: flex-start;  
+    word-wrap: break-word; 
+}
+
+@media only screen and (max-width: 768px) {/*SMARTPHONES*/
+    [class*="col-"] {
+        width: 100%;
+    }    
+
+    .login, form {
+        width: 95%;    
+    }
+}
+
+@media only screen and (min-width: 768px) {/*DESKTOPS*/
+    /*Definicao do grid*/
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+    .login, form {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {/*TABLETS*/    
+    /* Para tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+
+    .login, form {
+        width: 100%;    
+    } 
+}
