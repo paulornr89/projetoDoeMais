@@ -16,13 +16,20 @@
 }
 
 body {
-    background-color: #68C8E8;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
     color: #3C474D;
     height: 100vh;    
+}
+
+.fundoLogin {
+    background-color: #68C8E8;
+}
+
+.fundoApp {
+    background-color: white;
 }
 
 main {
@@ -154,6 +161,127 @@ form label {
     align-self: flex-start;  
 }
 
+/*CABEÇALHO*/
+header {
+    background-color: #68C8E8;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+header .perfil {
+    align-items: end;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.voltar img {
+    height: 50px;
+    width: 50px;
+}
+
+.perfil img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.menu {
+    list-style: none;
+    width: 70%;
+}
+
+.menu li {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #68E8C2;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu li a {
+    display: flex;
+}
+
+.menu img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.menu li:hover {
+    width: 500px;
+    height: 100px;
+    border-radius: 100px;
+    justify-content: flex-start;
+    animation: aumentar 1s forwards;
+    cursor: pointer;
+}
+
+.menu li:hover .texto {
+    display: flex;
+    justify-content: center;
+    align-items: anchor-center;
+    width: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    color: #3C474D;
+    animation: mostrar 3s forwards;
+}
+
+.menu li a:link {
+    text-decoration: none;
+}
+
+.menu li:hover a {
+    width: 80%;
+}
+
+.menu .icone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto {
+    display: none;
+}
+
+/*criar animações*/
+@keyframes aumentar {
+    0% {
+        padding-left: 5px;
+        width: 200px;
+    }
+    100% {
+        width: 500px;
+        padding-left: 5px;
+    }
+}
+
+@keyframes mostrar {
+    0% {
+        margin-left: 20px;
+        white-space: nowrap;
+        opacity: 0;
+    }
+    100% {
+        white-space: nowrap;
+        opacity: 1;
+    }
+}
+
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
     [class*="col-"] {
         width: 100%;
@@ -189,6 +317,17 @@ form label {
 
     form label {
         word-wrap: unset; 
+    }
+
+    .voltar img {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .perfil img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
     }
 }
 

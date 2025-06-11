@@ -7,16 +7,16 @@
     <meta name="keywords" content="doar, doador, instituição">
     <meta name="author" content="Paulo Rosa">
 
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
     <title>Cadastrar</title>
 </head>
-<body>
+<body class="fundoLogin">
     <main>
-        <form action="" method="post">
+        <form class="cadastro" action="cadastrar" method="post">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -73,7 +73,7 @@
                 <div class="col-1">
                     <div class="form-group">
                         <label>UF:</label>
-                        <input type="text" class="form-control" id="ud" name="uf"/>
+                        <input type="text" class="form-control" id="uf" name="uf"/>
                     </div>
                 </div>
                 <div class="col-3">
@@ -90,14 +90,26 @@
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
+                        <label>CPF:</label>
+                        <input type="text" class="form-control" id="cpf_cnpj" name="cpf_cnpj"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Senha:</label>
+                        <input type="password" class="form-control" id="senha" name="senha"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
                         <label>Tipo:</label>
                         <div class="list-radio">
                             <div class="radio-option">
-                                <input type="radio" id="pj" name="pj"> 
+                                <input type="radio" id="pj" name="tipo" value="PJ"> 
                                 <label for="pj">PJ</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="pf" name="pf"> 
+                                <input type="radio" id="pf" name="tipo" value="PF"> 
                                 <label for="pf">PF</label>
                             </div>
                         </div>
@@ -105,10 +117,11 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btnCancelar btn">Cancelar</button>
-                <button class="btnSalvar btn">Salvar</button>
+                <button class="btnCancelar btn" type="reset">Cancelar</button>
+                <button class="btnSalvar btn" type="submit">Salvar</button>
             </div>
         </form>
     </main>
 </body>
+<script type="text/javascript" src="./mainCadastro.js"></script>
 </html>
