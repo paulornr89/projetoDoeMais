@@ -17,5 +17,12 @@ class ItemDAO {
             ':unidade' => $item->getUnidade()
         ]);
     }
+
+    public function listar() {
+        $sql = "SELECT * FROM itens";
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } 
 }
 ?>

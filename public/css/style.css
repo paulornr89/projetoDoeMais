@@ -301,6 +301,85 @@ header .perfil {
     }
 }
 
+/*ITENS*/
+.item img:not(.icon) {
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    padding: 5px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.item {
+    background-color: #68C8E8;
+    width: 80%;
+    height: 130px;
+    border-radius: 5px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 3px 3px 10px;
+    transition: transform 0.7s;
+}
+
+.item:hover {
+    transform: scale(1.03);
+}
+
+.listaItens {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item .form-control {
+    height: 40px;
+    width: 60%;
+}
+
+.item .form-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item .btn {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #738B93;
+}
+
+.mostrarBotoes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.mostrarItens {
+    width: 60%;
+    background-color: #68E8C2;
+    border-radius: 5px;    
+    text-align: center;
+    padding: 20px 0 20px 0;
+    box-shadow: 3px 3px 10px;
+}
+
+/* .form-control {
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid #68C8E8;
+    color: #3C474D;
+    font-weight: 300;
+    font-size: large;
+    padding-left: 10px;
+    outline: none;
+} */
+
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
     [class*="col-"] {
         width: 100%;

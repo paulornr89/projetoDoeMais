@@ -12,5 +12,11 @@ class ItemController {
             return ['status' => 'error', 'message' => 'Erro ao cadastrar doador.'];
         }
     }
+    
+    public function listar() {
+        $dao = new ItemDAO();
+        $itens = $dao->listar();
+        return ['status' => 'success', 'data' => $itens];
+    }
 }
 ?>
