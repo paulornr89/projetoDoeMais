@@ -23,4 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'listarItens') {
     $resultado = $controller->listar();
     echo json_encode($resultado);
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'atualizarItem') {
+    $controller = new ItemController();
+    $resultado = $controller->atualizar($_POST);
+    echo json_encode($resultado);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'deletarItem') {
+    $controller = new ItemController();
+    $resultado = $controller->deletar($_POST);
+    echo json_encode($resultado);
+}
 ?>

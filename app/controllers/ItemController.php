@@ -7,9 +7,9 @@ class ItemController {
         $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade']);
         $dao = new ItemDAO();
         if ($dao->inserir($item)) {
-            return ['status' => 'success', 'message' => 'Doador cadastrado com sucesso!'];
+            return ['status' => 'success', 'message' => 'Item cadastrado com sucesso!'];
         } else {
-            return ['status' => 'error', 'message' => 'Erro ao cadastrar doador.'];
+            return ['status' => 'error', 'message' => 'Erro ao cadastrar item.'];
         }
     }
     
@@ -17,6 +17,27 @@ class ItemController {
         $dao = new ItemDAO();
         $itens = $dao->listar();
         return ['status' => 'success', 'data' => $itens];
+    }
+
+    public function atualizar($dados) {
+        $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade']);
+        $id = $dados['id'];
+        $dao = new ItemDAO();
+        if ($dao->atualizar($item, $id)) {
+            return ['status' => 'success', 'message' => 'Item atualizado com sucesso!'];
+        } else {
+            return ['status' => 'error', 'message' => 'Erro ao atualizar item.'];
+        }
+    }
+
+    public function deletar($dados) {
+        $id = $dados['id'];
+        $dao = new ItemDAO();
+        if ($dao->deletar($id)) {
+            return ['status' => 'success', 'message' => 'Item deletado com sucesso!'];
+        } else {
+            return ['status' => 'error', 'message' => 'Erro ao deletar item.'];
+        }
     }
 }
 ?>

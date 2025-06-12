@@ -24,5 +24,24 @@ class ItemDAO {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
+
+    public function atualizar(Item $item, $id) {
+        $sql = "UPDATE itens SET descricao = :descricao, tipo = :tipo, unidade = :unidade WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':descricao' => $item->getDescricao(),
+            ':tipo' => $item->getTipo(),
+            ':unidade' => $item->getUnidade(),
+            ':id' => $id
+        ]);
+    }
+
+    public function deletar($id) {
+        $sql = "DELETE FROM itens WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id
+        ]);
+    }
 }
 ?>
