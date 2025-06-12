@@ -74,6 +74,8 @@ main {
 .row {
     padding-left: 15px;
     padding-right: 15px;
+    display: flex;
+    gap: 10px;
 }
 
 .list-radio {
@@ -98,12 +100,17 @@ input[type='radio']:checked {
 }
 
 /*LOGIN*/
-.login, form {
+form {
     background-color: #68E8C2;
     border-radius: 5px;    
     text-align: center;
     padding: 20px 0 20px 0;
     box-shadow: 3px 3px 10px;
+}
+
+.login {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .login .form-group input + span {
@@ -141,24 +148,36 @@ input[type='radio']:checked {
     margin-bottom: 5px;
     align-self: center;
     box-shadow: 1px 1px 5px;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .btnCancelar {
     background-color: #E8A968;
-    float: left;
-    margin-left: 25%;
+    
 }
 
 .btnSalvar {
     background-color: #68C8E8;
-    float: right;
-    margin-right: 25%;
+    margin-left: auto;
 }
 
 /*CADASTRO*/
 form label {
     margin-bottom: 5px;
     align-self: flex-start;  
+}
+
+form input[type="text"]:read-only {
+    background-color: #D9D9D9;
+}
+
+.titulo {
+    margin-bottom: 20px;
 }
 
 /*CABEÇALHO*/
@@ -312,7 +331,7 @@ header .perfil {
     .col-12 {width: 100%;}
 
     .login, form {
-        width: 60%;
+        width: 50%;
     }
 
     form label {
