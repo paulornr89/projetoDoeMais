@@ -1,6 +1,5 @@
 document.querySelector(".cadastro").onsubmit = async (e) => {
     e.preventDefault();
-    console.log("teste")
     try {
         const formData = new FormData(); // Coleta tudo automaticamente
         formData.append('nome', document.getElementById('nome').value);
@@ -14,7 +13,7 @@ document.querySelector(".cadastro").onsubmit = async (e) => {
         formData.append('tipo', document.querySelector('input[name="tipo"]:checked').value);
         formData.append('senha', document.getElementById('senha').value);
 
-        const response = await fetch('../../public/index.php?action=cadastrar', {
+        const response = await fetch('../../public/index.php?action=cadastrarDoador', {
             method: 'POST',
             body: formData
         })

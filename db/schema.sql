@@ -39,7 +39,7 @@ create table doacoes (
 create table itens (
 	id serial primary key,
 	descricao varchar(30) not null,
-	tipo char(1) not null check(tipo in ('P', 'N')),/*Perecivel e nao perecivel*/
+	tipo varchar(2) not null check(tipo in ('AP', 'AN', 'VE', 'PL', 'PH')),/*Alimento Perecivel, Alimento nao perecivel, Vestuario, Produto de Limpeza, Produto de Higiene*/
 	unidade varchar(6) not null
 );
 
