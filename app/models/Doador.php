@@ -1,7 +1,7 @@
 <?php
 class Doador {
+    private $idUsuario;
     private $nome;
-    private $email;
     private $cpf_cnpj;
     private $telefone;
     private $cep;
@@ -9,12 +9,11 @@ class Doador {
     private $cidade;
     private $uf;
     private $tipo;
-    private $senha;
 
 
-    public function __construct($nome, $email, $cpf_cnpj, $telefone, $cep, $endereco, $cidade, $uf, $tipo, $senha) {
+    public function __construct($idUsuario, $nome, $cpf_cnpj, $telefone, $cep, $endereco, $cidade, $uf, $tipo) {
+        $this->idUsuario = $idUsuario;
         $this->nome = $nome;
-        $this->email = $email;
         $this->cpf_cnpj = $cpf_cnpj;
         $this->telefone = $telefone;
         $this->cep = $cep;
@@ -22,15 +21,14 @@ class Doador {
         $this->cidade = $cidade;
         $this->uf = $uf;
         $this->tipo = $tipo;
-        $this->setSenha($senha);
+    }
+    
+    public function getIdUsuario() {
+        return $this->idUsuario;
     }
     
     public function getNome() {
         return $this->nome;
-    }
-
-    public function getEmail() {
-        return $this->email;
     }
 
     public function getCpf_cnpj() {
@@ -60,17 +58,13 @@ class Doador {
     public function getTipo() {
         return $this->tipo;
     }
-
-    public function getSenha() {
-        return $this->senha;
+        
+    public function setIdUsuario($idUsuario) {
+        $this->idUsuario = $idUsuario;
     }
         
     public function setNome($nome) {
         $this->nome = $nome;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
     }
 
     public function setCpf_cnpj($cpf_cnpj) {
@@ -99,11 +93,6 @@ class Doador {
 
     public function setTipo($tipo) {
         $this->tipo = $tipo;
-    }
-
-    public function setSenha($senha) {
-        // Ideal: aplicar hash diretamente ao armazenar
-        $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
 }
 ?>

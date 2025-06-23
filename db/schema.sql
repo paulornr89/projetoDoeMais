@@ -1,39 +1,45 @@
-create table doadores (
+create table usuarios (
 	id serial primary key,
+	email varchar(100) unique not null,
+	senha varchar(255) not null,
+	tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('D', 'I')),--D é doador e I é instituicao
+    criado_em TIMESTAMP not null default current_timestamp
+)
+
+create table doadores (
+	id_usuario INTEGER PRIMARY KEY REFERENCES usuarios(id),
 	cpf_cnpj varchar(14) not null unique,
 	nome varchar(50) not null,
-	email varchar(40) not null,
 	telefone varchar(11) not null,
 	cep varchar(8) not null,
 	endereco varchar(255) not null,
 	cidade varchar(30) not null,
 	uf varchar(2) not null,
-	senha varchar(20) not null,
 	tipo char(2) not null check(tipo in ('PF', 'PJ'))
 );
 
 create table instituicoes (
-	cnpj varchar(14) not null primary key,
-	razao varchar(50) not null,
-	email varchar(40) not null,
+	id_usuario INTEGER PRIMARY KEY REFERENCES usuarios(id),
+	cnpj varchar(14) not null,
+	razao varchar(100) not null,
+	nome_fantasia varchar(100) not null,
 	telefone varchar(11) not null,
 	cep varchar(8) not null,
 	endereco varchar(255) not null,
 	cidade varchar(30) not null,
-	uf varchar(2) not null,
-	senha varchar(20) not null
+	uf varchar(2) not null
 );
 
 create table doacoes (
 	id serial primary key,
 	id_doador integer not null,
-	id_instituicao varchar(14) not null,
+	id_instituicao integer not null,
 	status char(1) not null check(status in ('A', 'O')),
 	criado_em timestamp not null default current_timestamp,
 	encerrado_em timestamp not null,
 	
-	foreign key(id_doador) references doadores (id),
-	foreign key(id_instituicao) references instituicoes(cnpj)
+	FOREIGN KEY (id_doador) REFERENCES doadores(id_usuario),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicoes(id_usuario)
 );
 
 create table itens (
@@ -54,26 +60,26 @@ create table doacoes_itens (
 create table avaliacoes_doador (
 	id serial primary key,
 	id_doador integer not null,
-	id_instituicao varchar(14) not null,
+	id_instituicao integer not null,
 	estado_produtos char(1) not null check(estado_produtos in ('A', 'B', 'C', 'D')),
 	pontualidade char(1) not null check(pontualidade in ('A', 'B', 'C', 'D')),
 	observacoes varchar(255),
 	criado_em timestamp not null default current_timestamp,
 	
-	foreign key(id_doador) references doadores(id),
-	foreign key(id_instituicao) references instituicoes(cnpj)
+	FOREIGN KEY (id_doador) REFERENCES doadores(id_usuario),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicoes(id_usuario)
 );
 
 create table avaliacoes_instituicao (
 	id serial primary key,
 	id_doador integer not null,
-	id_instituicao varchar(14) not null,
+	id_instituicao integer not null,
 	atendimento char(1) not null check(atendimento in ('A', 'B', 'C', 'D')),
 	confiabilidade char(1) not null check(confiabilidade in ('A', 'B', 'C', 'D')),
 	coleta_recebimento char(1) not null check(coleta_recebimento in ('A', 'B', 'C', 'D')),
 	observacoes varchar(255),
 	criado_em timestamp not null default current_timestamp,
 	
-	foreign key(id_doador) references doadores(id),
-	foreign key(id_instituicao) references instituicoes(cnpj)
+	FOREIGN KEY (id_doador) REFERENCES doadores(id_usuario),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicoes(id_usuario)
 );

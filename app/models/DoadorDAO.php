@@ -8,20 +8,19 @@ class DoadorDAO {
         $this->pdo = Database::getConnection();
     }
 
-    public function inserir(Doador $user) {
-        $sql = "INSERT INTO doadores (nome, email, cpf_cnpj, telefone, cep, endereco, cidade, uf, tipo, senha) VALUES (:nome, :email, :cpf_cnpj, :telefone, :cep, :endereco, :cidade, :uf, :tipo, :senha)";
+    public function inserir(Doador $doador) {
+        $sql = "INSERT INTO doadores (id_usuario, nome, cpf_cnpj, telefone, cep, endereco, cidade, uf, tipo) VALUES (:id_usuario, :nome, :cpf_cnpj, :telefone, :cep, :endereco, :cidade, :uf, :tipo)";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
-            ':nome' => $user->getNome(),
-            ':email' => $user->getEmail(),
-            ':cpf_cnpj' => $user->getCpf_cnpj(),
-            ':telefone' => $user->getTelefone(),
-            ':cep' => $user->getCep(),
-            ':endereco' => $user->getEndereco(),
-            ':cidade' => $user->getCidade(),
-            ':uf' => $user->getUf(),
-            ':tipo' => $user->getTipo(),
-            ':senha' => $user->getSenha()
+            ':id_usuario' => $doador->getIdUsuario(),
+            ':nome' => $doador->getNome(),
+            ':cpf_cnpj' => $doador->getCpf_cnpj(),
+            ':telefone' => $doador->getTelefone(),
+            ':cep' => $doador->getCep(),
+            ':endereco' => $doador->getEndereco(),
+            ':cidade' => $doador->getCidade(),
+            ':uf' => $doador->getUf(),
+            ':tipo' => $doador->getTipo()
         ]);
     }
 }

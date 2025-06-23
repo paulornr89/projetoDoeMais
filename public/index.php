@@ -5,9 +5,16 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../app/controllers/DoadorController.php';
 require_once __DIR__ . '/../app/controllers/ItemController.php';
+require_once __DIR__ . '/../app/controllers/InstituicaoController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'cadastrarDoador') {
     $controller = new DoadorController();
+    $resultado = $controller->cadastrar($_POST);
+    echo json_encode($resultado);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'cadastrarInstituicao') {
+    $controller = new InstituicaoController();
     $resultado = $controller->cadastrar($_POST);
     echo json_encode($resultado);
 }
