@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../app/controllers/DoadorController.php';
 require_once __DIR__ . '/../app/controllers/ItemController.php';
 require_once __DIR__ . '/../app/controllers/InstituicaoController.php';
+require_once __DIR__ . '/../app/controllers/DoacaoController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'cadastrarDoador') {
     $controller = new DoadorController();
@@ -40,6 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'atualizarItem'
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'deletarItem') {
     $controller = new ItemController();
     $resultado = $controller->deletar($_POST);
+    echo json_encode($resultado);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'registrarDoacao') {
+    $controller = new DoacaoController();
+    $resultado = $controller->cadastrar($_POST);
     echo json_encode($resultado);
 }
 ?>

@@ -34,9 +34,9 @@ create table doacoes (
 	id serial primary key,
 	id_doador integer not null,
 	id_instituicao integer not null,
-	status char(1) not null check(status in ('A', 'O')),
+	status char(1) not null check(status in ('P', 'C')),--P é pendente e C é concluída
 	criado_em timestamp not null default current_timestamp,
-	encerrado_em timestamp not null,
+	encerrado_em timestamp,
 	
 	FOREIGN KEY (id_doador) REFERENCES doadores(id_usuario),
     FOREIGN KEY (id_instituicao) REFERENCES instituicoes(id_usuario)
