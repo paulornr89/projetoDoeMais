@@ -6,7 +6,7 @@
 
         public function __construct($id_item, $id_doacao, $quantidade) {
             $this->id_item = $id_item;
-            $this->$id_doacao = $id_doacao;
+            $this->id_doacao = $id_doacao;
             $this->quantidade = $quantidade;            
         }
 

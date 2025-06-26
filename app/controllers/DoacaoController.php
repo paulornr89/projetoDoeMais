@@ -6,10 +6,11 @@
         public function cadastrar($dados) {
             $doacao = new Doacao($dados['id_doador'], $dados['id_instituicao'], $dados['status']);
             $dao = new DoacaoDAO();
-            if ($dao->inserir($doacao)) {
-                return ['status' => 'success', 'message' => 'Doação cadastrada com sucesso!'];
+            $idDoacao = $dao->inserir($doacao);
+            if ($idDoacao) {
+                return ['status' => 'success', 'message' => 'Doacao cadastrada com sucesso!', 'id' => $idDoacao];
             } else {
-                return ['status' => 'error', 'message' => 'Erro ao cadastrar doação.'];
+                return ['status' => 'error', 'message' => 'Erro ao cadastrar doacao.'];
             }
         }
     }
