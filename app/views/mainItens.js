@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 divListaItens.appendChild(novoElemento)
             }
         })
+        .catch(error => console.log(error));
     }
 });
 

@@ -1,4 +1,11 @@
 <?php
+    session_start();
+
+    // if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'D') {
+    //     header('Location: logout.php');
+    //     exit;
+    // }
+    
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -29,6 +36,12 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'listarItens') {
         $controller = new ItemController();
+        $resultado = $controller->listar();
+        echo json_encode($resultado);
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'listarInstituicoes') {
+        $controller = new InstituicaoController();
         $resultado = $controller->listar();
         echo json_encode($resultado);
     }

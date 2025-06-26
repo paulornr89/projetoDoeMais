@@ -22,5 +22,12 @@ class InstituicaoController {
             }
         }
     }
+
+    public function listar() {
+        $dao = new InstituicaoDAO();
+        $instituicoes = $dao->listarInstituicoes();
+
+        return ['status' => 'success', 'data' => $instituicoes];
+    }
 }
 ?>

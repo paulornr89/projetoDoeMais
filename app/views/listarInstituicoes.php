@@ -21,29 +21,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-    <title>Lista de Itens</title>
+    <title>Lista de Instituições</title>
 </head>
 <body>
     <header>
-        <a target="_self" href=<?php
-            if($_SESSION['usuario_id'] != "paulornr89@gmail.com") {
-                echo "./itens.php";
-            } else {
-                echo "../../public/menuAdmin.php";
-            }
-        ?> class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        <a target="_self" href="../../public/menuAdmin.php" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../public/assets/perfil.png"></a>
+        <a class="perfil"><img src="../../public/assets/default.svg"></a>
     </header>
     <main>
-        <div class="mostrarItens">
+        <div class="mostrarInstituicoes">
             <div class="titulo">
-                <h2 class="titulo-texto">Lista de Itens</h2>
+                <h2 class="titulo-texto">Instituições Beneficentes</h2>
             </div>
-            <div class="listaItens">
+            <div class="listaInstituicoes">
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="./mainItens.js"></script>
+    <script type="text/javascript" src="./mainInstituicoes.js"></script>
 </body>
 </html>

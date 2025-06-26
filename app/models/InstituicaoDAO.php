@@ -23,5 +23,12 @@ class InstituicaoDAO {
             ':uf' => $instituicao->getUf()
         ]);
     }
+
+    public function listarInstituicoes() {
+        $sql = "SELECT * FROM instituicoes";
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
