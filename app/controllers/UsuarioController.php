@@ -24,16 +24,14 @@ class UsuarioController {
             $_SESSION['usuario_tipo'] = $usuario->getTipo();
 
             if($usuario->getEmail() == 'paulornr89@gmail.com'){
-                header('Location: ../../views/menuAdmin.php');
-            }
-            if($usuario->getTipo() == 'D'){
-                header('Location: ../../views/menuDoador.php');
-            }
-            if($usuario->getTipo() == 'I'){
-                header('Location: ../../views/menuInstituicao.php');
+                header('Location: /projetoDoar/public/menuAdmin.php');
+            } else if($usuario->getTipo() == 'D'){
+               header('Location: /projetoDoar/public/menuDoador.php');
+            } else if($usuario->getTipo() == 'I'){
+                header('Location: /projetoDoar/public/menuInstituicao.php');
             }
         } else {
-            header('Location: ../../public/login.php?erro=1');
+            header('Location: /projetoDoar/public/login.php?erro=1');
         }
         exit;
     }

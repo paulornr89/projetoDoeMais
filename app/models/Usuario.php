@@ -29,5 +29,9 @@
         public function setSenha($senha) {
             $this->senha = password_hash($senha, PASSWORD_DEFAULT);
         }
+
+        public function setSenhaHash($hash) {
+            $this->senha = $hash;
+        }
     }
 ?>

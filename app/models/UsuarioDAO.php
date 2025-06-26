@@ -26,7 +26,9 @@
             $dados = $stmt->fetch();
 
             if($dados) {
-                return new Usuario($dados['email'], $dados['senha'], $dados['tipo']);
+                $usuario = new Usuario($dados['email'], '', $dados['tipo']);
+                $usuario->setSenhaHash($dados['senha']);
+                return $usuario;
             }
 
             return null;
