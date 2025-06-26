@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../app/controllers/UsuarioController.php';
+    require_once __DIR__ . '/../app/controllers/UsuarioController.php';
 
-$controller = new UsuarioController();
-$controller->autenticar($_POST);
+    $controller = new UsuarioController();
+    $controller->autenticar($_POST);
 ?>

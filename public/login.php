@@ -2,8 +2,8 @@
     session_start();
     session_unset();     // limpa todas as variáveis de sessão
     session_destroy();   // destrói a sessão
-    exit;
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

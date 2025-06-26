@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log("chamando")
     const path = window.location.pathname;
-    
-    if (path.includes('cadastroItens.html')) {
+
+    if (path.includes('cadastroItens.php')) {
         document.querySelector(".cadastro").onsubmit = async (e) => {
             e.preventDefault();
             try {
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
                 const resultado = await response.json();
         
-                window.location.href = "./cadastroItens.html";
+                window.location.href = "./cadastroItens.php";
             
             } catch (e) {
                 console.log(e)
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } 
     
-    if (path.includes('listarItens.html')) {
+    if (path.includes('listarItens.php')) {
         fetch('../../public/index.php?action=listarItens', {
             method: 'GET'
         })
@@ -70,7 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function atualizarItem(id) {
-    console.log(id)
     try {
         const formData = new FormData(); // Coleta tudo automaticamente
         formData.append('descricao', document.querySelector(`#${id}`).closest(".item").querySelector('[id^="descricao_"]').value);
@@ -85,7 +85,7 @@ async function atualizarItem(id) {
 
         const resultado = await response.json();
 
-        window.location.href = "./listarItens.html";
+        window.location.href = "./listarItens.php";
     
     } catch (e) {
         console.log(e)
@@ -109,7 +109,7 @@ async function deletarItem(id) {
 
         const resultado = await response.json();
 
-        window.location.href = "./listarItens.html";
+        window.location.href = "./listarItens.php";
     
     } catch (e) {
         console.log(e)

@@ -1,5 +1,14 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'D') {
+        header('Location: logout.php');
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +25,13 @@
 </head>
 <body>
     <header>
-        <a target="_self" href="./itens.html" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        <a target="_self" href=<?php
+            if($_SESSION['usuario_id'] != "paulornr89a@gmail.com") {
+                echo "./itens.php";
+            } else {
+                echo "../../public/menuAdmin.php";
+            }
+        ?> class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="../../public/assets/perfil.png"></a>
     </header>
