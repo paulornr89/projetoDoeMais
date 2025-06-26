@@ -21,5 +21,48 @@ class DoadorController {
             }
         }
     }
+
+    public function listar() {
+        $dao = new DoadorDAO();
+        $doadores = $dao->listarDoadores();
+
+        foreach ($doadores as &$doador) {
+            $doador['cpf_cnpj'] = $this->mascararCpf($doador['cpf_cnpj']);
+            $doador['telefone'] = $this->mascararTelefone($doador['telefone']);
+            $doador['nome'] = $this->nomeParcial($doador['nome']);
+            $doador['endereco'] = $this->enderecoParcial($doador['endereco']);
+            $doador['cep'] = $this->mascararCep($doador['cep']);
+        }
+
+        return ['status' => 'success', 'data' => $doadores];
+    }
+
+    // private function mascararEmail($email) {
+    //     $parte = explode("@", $email);
+    //     $prefixo = substr($parte[0], 0, 3) . '***';
+    //     return $prefixo . '@' . $parte[1];
+    // }
+    
+    private function mascararTelefone($telefone) {
+        return '(**) *****-' . substr(preg_replace('/[^0-9]/', '', $telefone), -4);
+    }
+    
+    private function nomeParcial($nomeCompleto) {
+        $partes = explode(" ", $nomeCompleto);
+        return $partes[0] . (isset($partes[1]) ? ' ' . substr($partes[1], 0, 1) . '.' : '');
+    }
+    
+    private function enderecoParcial($endereco) {
+        $partes = explode(" ", $endereco);
+        return $partes[0] . (isset($partes[1]) ? ' ' . substr($partes[1], 0, 1) . '.' : '');
+    }
+
+    private function mascararCep($cep) {
+        return substr($cep, 0, 3) . '**-***';
+    }
+
+    private function mascararCpf($cpf) {
+        return '***.' . substr($cpf, 3, 3) . '.***-**';
+    }
 }
 ?>

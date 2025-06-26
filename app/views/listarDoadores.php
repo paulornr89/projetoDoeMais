@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-    <title>Lista de Instituições</title>
+    <title>Lista de Doadores</title>
 </head>
 <body>
     <header>
@@ -30,11 +30,11 @@
         <a class="perfil"><img src="../../public/assets/default.svg"></a>
     </header>
     <main>
-        <div class="mostrarInstituicoes">
+        <div class="mostrarDoadores">
             <div class="titulo">
-                <h2 class="titulo-texto">Instituições Beneficentes</h2>
+                <h2 class="titulo-texto">Usuários Doadores</h2>
             </div>
-            <div class="listaUsuarios">
+            <div class="listaDoadores">
             </div>
         </div>
     </main>

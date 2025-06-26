@@ -30,10 +30,10 @@
     </header>
     <main>
         <ul class="menu">
-            <li><a target="_self" href="../app/views/itens.php"><div class="icone"><img src="/projetoDoar/public/assets/itensMenu.svg"></div><div class="texto">Cadastrar Itens</div></a></li>
+            <li><a target="_self" href="../app/views/cadastroItens.php"><div class="icone"><img src="/projetoDoar/public/assets/itensMenu.svg"></div><div class="texto">Cadastrar Itens</div></a></li>
             <li><a target="_self" href="../app/views/listarItens.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Itens</div></a></li>
             <li><a target="_self" href="../app/views/listarInstituicoes.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Instituições</div></a></li>
-            <li><a target="_self" href="../app/views/itens.html"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Usuários</div></a></li>
+            <li><a target="_self" href="../app/views/listarDoadores.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Doadores</div></a></li>
         </ul>
     </main>
 </body>

@@ -23,5 +23,12 @@ class DoadorDAO {
             ':tipo' => $doador->getTipo()
         ]);
     }
+
+    public function listarDoadores() {
+        $sql = "SELECT * FROM doadores";
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

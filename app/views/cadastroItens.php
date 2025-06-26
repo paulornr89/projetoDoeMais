@@ -25,7 +25,7 @@
 </head>
 <body>
     <header>
-        <a class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        <a class="voltar" href="../../public/menuAdmin.php"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="../../public/assets/perfil.png"></a>
     </header>

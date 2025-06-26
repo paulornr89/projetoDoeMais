@@ -45,6 +45,12 @@
         $resultado = $controller->listar();
         echo json_encode($resultado);
     }
+   
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'listarDoadores') {
+        $controller = new DoadorController();
+        $resultado = $controller->listar();
+        echo json_encode($resultado);
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'atualizarItem') {
         $controller = new ItemController();

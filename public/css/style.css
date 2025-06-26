@@ -314,43 +314,34 @@ header .perfil {
     }
 }
 
-/*ITENS*/
-.item img:not(.icon) {
-    height: 80px;
-    width: 80px;
-    background-color: white;
-    padding: 5px;
-    align-items: center;
-    border-radius: 5px;
-}
-
-.item {
-    background-color: #68C8E8;
+/*INSTITUICOES, DOADORES E ITENS*/
+.mostrarInstituicoes, .mostrarDoadores, .mostrarItens {
     width: 80%;
-    height: 140px;
-    border-radius: 5px;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: space-around;
+    background-color: #68E8C2;
+    border-radius: 5px;    
+    text-align: center;
+    padding: 20px 0 20px 0;
     box-shadow: 3px 3px 10px;
-    transition: transform 0.7s;
 }
 
-.item:hover {
-    transform: scale(1.03);
+/* .mostrarItens {
+    width: 60%;
+} */
+
+.infoInstituicao, .infoDoador {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    font-size: larger;
 }
 
-.listaItens {
+.infoItens {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-}
-
-.item .form-control {
-    height: 30px;
-    width: 60%;
+    gap: 5px;
 }
 
 .item .form-group {
@@ -360,77 +351,33 @@ header .perfil {
     margin-bottom: 0;
 }
 
-.infoItens {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.item .btn {
-    margin: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #738B93;
-}
-
-.mostrarBotoes {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-around;
-}
-
-.mostrarItens {
+.item .form-control {
+    height: 30px;
     width: 60%;
-    background-color: #68E8C2;
-    border-radius: 5px;    
-    text-align: center;
-    padding: 20px 0 20px 0;
-    box-shadow: 3px 3px 10px;
-}
-
-/*INSTITUICOES*/
-.mostrarInstituicoes {
-    width: 80%;
-    background-color: #68E8C2;
-    border-radius: 5px;    
-    text-align: center;
-    padding: 20px 0 20px 0;
-    box-shadow: 3px 3px 10px;
-}
-
-.infoInstituicao {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 5px;
-    font-size: larger;
 }
 
 .--hide {
     display: none;
 }
 
-.listaInstituicoes {
+.listaInstituicoes, .listaDoadores, .listaItens {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
 }
 
-.instituicao .btn {
+.instituicao .btn, .item .btn {
     margin: 0;
     width: 50px;
     height: 50px;
     background-color: #738B93;
 }
 
-.instituicao {
+.instituicao, .doador, .item {
     background-color: #68C8E8;
     width: 80%;
-    height: 150px;
+    height: 200px;
     border-radius: 5px;
     display: flex;
     align-self: center;
@@ -440,11 +387,15 @@ header .perfil {
     transition: transform 0.7s;
 }
 
-.instituicao:hover {
+/* .item {
+    height: 140px;
+} */
+
+.instituicao:hover, .doador:hover, .item:hover {
     transform: scale(1.03);
 }
 
-.instituicao img:not(.icon) {
+.instituicao img:not(.icon), .doador img:not(.icon), .item img:not(.icon) {
     height: 80px;
     width: 80px;
     background-color: white;
@@ -452,6 +403,21 @@ header .perfil {
     align-items: center;
     border-radius: 5px;
     margin: auto 10px auto 10px;
+}
+
+.infoInstituicao .coluna, .infoDoador .coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    text-align: left;
+}
+
+.mostrarBotoes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
 }
 
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
