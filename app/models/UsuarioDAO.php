@@ -19,5 +19,17 @@
 
             return $this->pdo->lastInsertId();
         }
+
+        public function consultarPorEmail($email) {
+            $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
+            $stmt->execute([':email' => $email]);
+            $dados = $stmt->fetch();
+
+            if($dados) {
+                return new Usuario($dados['email'], $dados['senha'], $dados['tipo']);
+            }
+
+            return null;
+        }
     }
 ?>
