@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log("chamando")
     const path = window.location.pathname;
     console.log(path)
 
@@ -174,7 +173,7 @@ async function atualizarItem(id) {
         /**
          * VALIDAR SE JÁ EXISTE CADASTRO
          */
-        alert("Erro ao cadastrar item!")
+        alert("Erro ao cadastrar item!");
     }
 }
 

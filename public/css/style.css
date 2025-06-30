@@ -357,7 +357,7 @@ header .perfil {
 }
 
 .--hide {
-    display: none;
+    display: none!important;
 }
 
 .listaInstituicoes, .listaDoadores, .listaItens {
@@ -384,7 +384,7 @@ header .perfil {
     align-items: center;
     justify-content: space-around;
     box-shadow: 3px 3px 10px;
-    transition: transform 0.7s;
+    transition: transform 0.3s;
 }
 
 /* .item {
@@ -418,6 +418,79 @@ header .perfil {
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
+}
+
+/*DOACAO ITENS*/
+.containerDoacao {
+    margin-top: 20px;
+    background-color: #68E8C2;
+    border-radius: 5px;    
+    width: 50%;
+    box-shadow: 3px 3px 10px;
+}
+
+.containerDoacao .titulo {
+    text-align: center;
+}
+
+.btnDoacao {
+    background-color: #738B93;
+    width: 50px!important;
+}
+
+.mostrarBtn {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.containerDoacao .infoItens h3 {
+    text-align: center;
+}
+
+.containerDoacao .infoItens input {
+    height: 50px;
+    width: 100px;
+}
+
+.containerDoacao .item {
+    height: 150px;
+    width: 70%;
+}
+
+.containerDoacao .item .form-group {
+    justify-content: inherit;
+    gap: 20px;
+}
+
+.containerDoacao .listaItens {
+    flex-grow: 1;
+    max-height: 300px; /* Aumenta a área de rolagem */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge antigo */
+}
+
+
+.containerDoacao .listaItens::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Edge moderno */
+}
+
+.containerDoacao .item {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #68C8E8;
+    border-radius: 10px;
+    padding: 10px;
+    width: 60%;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
 }
 
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
