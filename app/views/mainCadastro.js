@@ -38,7 +38,7 @@ document.querySelector(".cadastro").onsubmit = async (e) => {
             console.log(response)
         }
 
-        window.location.href = "./login.php";
+        window.location.href = "../../public/login.php";
     
     } catch (e) {
         console.log(e)

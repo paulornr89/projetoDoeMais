@@ -34,7 +34,11 @@
             <div class="titulo">
                 <h2 class="titulo-texto">Para qual Instituição você deseja doar?</h2>
             </div>
-            <div class="listaItens">
+            <div class="search">
+                <input type="text" class="form-control" id="pesquisaInstituicao" name="pesquisaInstituicao" placeholder="Informe quem deseja beneficar..."/>
+            </div>
+            <div class="listaInstituicao">
+
             </div>
             <div class="mostrarBtn">
                 <button id="up" class="btn btnDoacao"><img class="icon" src="../../../public/assets/up.svg" alt="Ícone" style="width: 20px; height: 20px;"></button>

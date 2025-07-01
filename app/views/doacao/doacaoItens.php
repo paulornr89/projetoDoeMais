@@ -25,13 +25,7 @@
 </head>
 <body>
     <header>
-        <a target="_self" href=<?php
-            if($_SESSION['usuario_id'] != "paulornr89@gmail.com") {
-                echo "./itens.php";
-            } else {
-                echo "../../public/menuAdmin.php";
-            }
-        ?> class="voltar"><img src="../../../public/assets/arrowIcon.png"></a>
+        <a target="_self" href="../../../public/menuDoador.php" class="voltar"><img src="../../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="../../../public/assets/perfil.png"></a>
     </header>

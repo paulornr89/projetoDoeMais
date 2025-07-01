@@ -7,7 +7,7 @@ create table usuarios (
 )
 
 create table doadores (
-	id_usuario INTEGER PRIMARY KEY REFERENCES usuarios(id),
+	id_usuario INTEGER PRIMARY KEY,
 	cpf_cnpj varchar(14) not null unique,
 	nome varchar(50) not null,
 	telefone varchar(11) not null,
@@ -15,11 +15,12 @@ create table doadores (
 	endereco varchar(255) not null,
 	cidade varchar(30) not null,
 	uf varchar(2) not null,
-	tipo char(2) not null check(tipo in ('PF', 'PJ'))
+	tipo char(2) not null check(tipo in ('PF', 'PJ')),
+	CONSTRAINT fk_doador_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 create table instituicoes (
-	id_usuario INTEGER PRIMARY KEY REFERENCES usuarios(id),
+	id_usuario INTEGER PRIMARY KEY,
 	cnpj varchar(14) not null,
 	razao varchar(100) not null,
 	nome_fantasia varchar(100) not null,
@@ -27,7 +28,9 @@ create table instituicoes (
 	cep varchar(8) not null,
 	endereco varchar(255) not null,
 	cidade varchar(30) not null,
-	uf varchar(2) not null
+	uf varchar(2) not null,
+	CONSTRAINT fk_instituicao_usuario FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 create table doacoes (

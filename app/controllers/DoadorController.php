@@ -37,6 +37,22 @@ class DoadorController {
         return ['status' => 'success', 'data' => $doadores];
     }
 
+    public function atualizar($dados) {
+        $usuarioDao = new UsuarioDAO();
+        $usuarioAtualizado = $usuarioDao->atualizar($dados['id_usuario'], $dados['email'], $dados['senha'], 'D');
+    
+        $doador = new Doador($dados['id_usuario'], $dados['nome'], $dados['cpf_cnpj'], $dados['telefone'],
+            $dados['cep'], $dados['endereco'], $dados['cidade'], $dados['uf'], $dados['tipo']);    
+        $doadorDao = new DoadorDAO();
+        $doadorAtualizado = $doadorDao->atualizar($doador);
+    
+        if ($usuarioAtualizado && $doadorAtualizado) {
+            return ['status' => 'success', 'message' => 'Doador e usuário atualizados com sucesso!'];
+        } else {
+            return ['status' => 'error', 'message' => 'Erro ao atualizar dados.'];
+        }
+    }
+
     // private function mascararEmail($email) {
     //     $parte = explode("@", $email);
     //     $prefixo = substr($parte[0], 0, 3) . '***';

@@ -30,5 +30,13 @@ class InstituicaoDAO {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function consultarPorId($id) {
+        $sql = "SELECT * FROM instituicoes WHERE id_usuario = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

@@ -24,11 +24,34 @@ class DoadorDAO {
         ]);
     }
 
+    public function atualizar(Doador $doador) {
+        $sql = "UPDATE doadores SET telefone = :telefone, cep = :cep, 
+                    endereco = :endereco, cidade = :cidade, uf = :uf WHERE id_usuario = :id_usuario";
+    
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id_usuario' => $doador->getIdUsuario(),
+            ':telefone' => $doador->getTelefone(),
+            ':cep' => $doador->getCep(),
+            ':endereco' => $doador->getEndereco(),
+            ':cidade' => $doador->getCidade(),
+            ':uf' => $doador->getUf()
+        ]);
+    }
+
     public function listarDoadores() {
         $sql = "SELECT * FROM doadores";
         $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function consultarPorId($id) {
+        $sql = "SELECT * FROM doadores WHERE id_usuario = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>

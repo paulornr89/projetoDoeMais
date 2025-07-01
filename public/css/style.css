@@ -156,7 +156,7 @@ form {
     transform: scale(1.1);
 }
 
-.btnCancelar {
+.btnCancelar, .btnSalvarDoacao {
     background-color: #E8A968;
     
 }
@@ -177,6 +177,7 @@ form input[type="text"]:read-only {
 }
 
 .titulo {
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -391,7 +392,7 @@ header .perfil {
     height: 140px;
 } */
 
-.instituicao:hover, .doador:hover, .item:hover {
+.instituicao:hover, .doador:hover, .item:hover, .instituicaoDoar:hover {
     transform: scale(1.03);
 }
 
@@ -493,6 +494,91 @@ header .perfil {
     box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
 }
 
+.containerDoacao .search {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;;
+}
+
+.search input {
+    background-image: url('../assets/search.svg');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding-left: 40px; /* espaço para a imagem */
+    width: 60%;
+}
+
+.instituicaoDoar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #68C8E8;
+    border-radius: 10px;
+    padding: 10px;
+    width: 65%;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    align-self: center;
+    transition: transform 0.3s;
+}
+
+.instituicaoDoar img {
+    width: 20%;
+}
+
+.infoInstituicaoDoar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 45%;
+    text-align: justify;
+}
+
+.instituicaoDoar input[type='checkbox'] {
+    width: 20%;
+    height: 35px!important;
+    accent-color: #E8A968; /* muda a cor quando marcado */
+}
+
+/* .instituicaoDoar input[type='checkbox']:checked {
+    background-color: #E8A968;
+} */
+
+.listaInstituicao {
+    overflow-y: auto;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    justify-content: inherit;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge antigo */
+    margin-bottom: 20px;
+}
+
+.frete {
+    display: flex;
+    justify-content: center;
+}
+
+.formFrete {
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.salvarDoacao {
+    justify-content: center;
+}
+
+.infoFrete .titulo {
+    text-align: left;
+    margin-left: 15px;
+}
+
+hr {
+    border: 0.5px solid #738B93;
+    margin: 0px 20px 20px 20px;
+}
+
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
     [class*="col-"] {
         width: 100%;
@@ -505,6 +591,14 @@ header .perfil {
     form label {
         word-wrap: break-word; 
     }
+
+    .row {
+        flex-wrap: wrap;
+    }
+
+    main {
+        height: auto;  
+      }
 }
 
 @media only screen and (min-width: 768px) {/*DESKTOPS*/
@@ -521,6 +615,10 @@ header .perfil {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
+
+    main {
+      height: auto;  
+    }
 
     .login, form {
         width: 50%;
@@ -556,6 +654,14 @@ header .perfil {
     .col-s-10 {width: 83.33%;}
     .col-s-11 {width: 91.66%;}
     .col-s-12 {width: 100%;}
+
+    .formFrete [class*="col-"] {
+        width: 100%;
+    } 
+
+    .row {
+        flex-wrap: wrap; /* ← ADICIONE ESSA LINHA */
+    }
 
     .login, form {
         width: 100%;    

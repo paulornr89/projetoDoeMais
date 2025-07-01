@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
 
     // if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'D') {
     //     header('Location: logout.php');
@@ -9,12 +9,14 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    session_start();
 
     require_once __DIR__ . '/../app/controllers/DoadorController.php';
     require_once __DIR__ . '/../app/controllers/ItemController.php';
     require_once __DIR__ . '/../app/controllers/InstituicaoController.php';
     require_once __DIR__ . '/../app/controllers/DoacaoController.php';
     require_once __DIR__ . '/../app/controllers/DoacaoItemController.php';
+    require_once __DIR__ . '/../app/controllers/UsuarioController.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'cadastrarDoador') {
         $controller = new DoadorController();
@@ -73,6 +75,24 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'registrarDoacaoItem') {
         $controller = new DoacaoItemController();
         $resultado = $controller->registrar($_POST);
+        echo json_encode($resultado);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'deletarUsuario') {
+        $controller = new UsuarioController();
+        $resultado = $controller->deletar($_POST['id']);
+        echo json_encode($resultado);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'atualizarDoador') {
+        $controller = new DoadorController();
+        $resultado = $controller->atualizar($_POST);
+        echo json_encode($resultado);
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'consultarPorEmail') {
+        $controller = new UsuarioController();
+        $resultado = $controller->consultarPorEmail($_SESSION['usuario_id']);//$_GET['email'] para testar
         echo json_encode($resultado);
     }
 

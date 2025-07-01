@@ -35,5 +35,40 @@ class UsuarioController {
         }
         exit;
     }
+
+    public function deletar($id) {
+        $dao = new UsuarioDAO();
+        if ($dao->deletar($id)) {
+            return ['status' => 'success', 'message' => 'Usuário deletado com sucesso!'];
+        } else {
+            return ['status' => 'error', 'message' => 'Erro ao deletar usuário.'];
+        }
+    }
+
+    public function consultarPorEmail($email) {
+        $dao = new UsuarioDAO();
+        $usuario = $dao->consultarPorEmail($email);
+        
+
+        if($usuario->getTipo() == 'D') {
+            $doadorDao = new DoadorDAO();
+            $doador = $doadorDao->consultarPorId($usuario->getId());
+
+            if($doador) {
+                return ['status' => 'success', 'response' => $doador];
+            } else {
+                return ['status' => "error", 'message' => 'Erro ao consultar usuário.'];
+            }
+        } else {
+            $instituicaoDao = new InstituicaoDAO();
+            $instituicao = $instituicaoDao->consultarPorId($usuario->getId());
+
+            if($instituicao) {
+                return ['status' => 'success', 'response' => $instituicao];
+            } else {
+                return ['status' => "error", 'message' => 'Erro ao consultar usuário.'];
+            }
+        }
+    }
 }
 ?>

@@ -20,13 +20,51 @@
             return $this->pdo->lastInsertId();
         }
 
+        public function atualizar($id, $novoEmail, $novaSenha, $tipo) {
+            $usuarioAtual = $this->consultarPorId($id);
+        
+            // Se senha nova for diferente da antiga (comparando com hash), atualiza com novo hash
+            if (!password_verify($novaSenha, $usuarioAtual->getSenha())) {
+                $novaSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
+            } else {
+                $novaSenha = $usuarioAtual->getSenha(); // mantém a hash antiga
+            }
+        
+            $sql = "UPDATE usuarios SET email = :email, senha = :senha WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute([
+                ':email' => $novoEmail,
+                ':senha' => $novaSenha,
+                ':id'    => $id
+            ]);
+        }
+        
+        public function consultarPorId($id) {
+            $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+            $dados = $stmt->fetch();
+        
+            if ($dados) {
+                $usuario = new Usuario($dados['email'], '', $dados['tipo']);
+                $usuario->setSenhaHash($dados['senha']);
+                return $usuario;
+            }
+        
+            return null;
+        }
+
+        public function deletar($id) {
+            $stmt = $this->pdo->prepare("DELETE FROM usuarios WHERE id = :id");
+            return $stmt->execute([':id' => $id]);
+        }
+
         public function consultarPorEmail($email) {
             $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
             $stmt->execute([':email' => $email]);
             $dados = $stmt->fetch();
 
             if($dados) {
-                $usuario = new Usuario($dados['email'], '', $dados['tipo']);
+                $usuario = new Usuario($dados['email'], '', $dados['tipo'], $dados['id']);
                 $usuario->setSenhaHash($dados['senha']);
                 return $usuario;
             }
