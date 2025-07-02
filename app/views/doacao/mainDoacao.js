@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.querySelector("#logradouro").value = usuario.endereco;
             document.querySelector("#cidade").value = usuario.cidade;
             document.querySelector("#uf").value = usuario.uf;
+            sessionStorage.setItem("id_usuario", usuario.id_usuario)
 
         })
         .catch(error => console.log(error));
@@ -179,6 +180,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelector(".formFrete").onsubmit = (e) => {
             e.preventDefault();
             console.log("enviou")
+            const formData = new FormData(); // Coleta tudo automaticamente        
+            formData.append('id_usuario', sessionStorage.getItem("id_usuario"));        
+            formData.append('id_instituicao', );
+
+            fetch('../../../public/index.php?action=registrarDoacao',{
+                method: 'POST'
+            })
         }
     }
 });

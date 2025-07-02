@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <select class="form-control" id="tipoFrete" name="tipoFrete">
+                    <select class="form-control" id="tipoFrete" name="tipoFrete" required>
                         <option value="">Selecione uma opção...</option>
                         <option>Sim</option>
                         <option>Não</option>
@@ -96,9 +96,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row salvarDoacao">
-                    <button class="btnSalvarDoacao btn" type="submit">Salvar</button>
-                </div>
+            </div>
+            <div class="row salvarDoacao">
+                <button class="btnSalvarDoacao btn" type="submit">Salvar</button>
             </div>
         </form>
     </main>

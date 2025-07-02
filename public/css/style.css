@@ -36,7 +36,7 @@ main {
     display: flex;
     align-items: center; 
     justify-content: center;
-    height: 100vh;
+    min-height: calc(100vh - 10vh); 
 }
 
 .form-group {
@@ -207,11 +207,6 @@ header .perfil {
     margin-left: 20px;
 }
 
-.voltar img {
-    height: 50px;
-    width: 50px;
-}
-
 .voltar img, .perfil {
     transition: transform 0.3s;
 }
@@ -219,12 +214,6 @@ header .perfil {
 .voltar img:hover, .perfil:hover {
     transform: scale(1.3);
     cursor: pointer;
-}
-
-.perfil img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
 }
 
 .menu {
@@ -323,6 +312,7 @@ header .perfil {
     text-align: center;
     padding: 20px 0 20px 0;
     box-shadow: 3px 3px 10px;
+    margin: 20px auto 20px auto;
 }
 
 /* .mostrarItens {
@@ -368,12 +358,7 @@ header .perfil {
     gap: 20px;
 }
 
-.instituicao .btn, .item .btn {
-    margin: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #738B93;
-}
+
 
 .instituicao, .doador, .item {
     background-color: #68C8E8;
@@ -441,8 +426,8 @@ header .perfil {
 
 .mostrarBtn {
     display: flex;
-    justify-content: space-around;
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
     width: 50%;
     margin: 0 auto;
 }
@@ -462,13 +447,13 @@ header .perfil {
 }
 
 .containerDoacao .item .form-group {
-    justify-content: inherit;
+    justify-content: center;
     gap: 20px;
 }
 
 .containerDoacao .listaItens {
     flex-grow: 1;
-    max-height: 300px; /* Aumenta a área de rolagem */
+    max-height: 350px; /* Aumenta a área de rolagem */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -525,6 +510,13 @@ header .perfil {
     width: 20%;
 }
 
+.instituicao .btn, .item .btn {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #738B93;
+}
+
 .infoInstituicaoDoar {
     display: flex;
     flex-direction: column;
@@ -537,6 +529,7 @@ header .perfil {
     width: 20%;
     height: 35px!important;
     accent-color: #E8A968; /* muda a cor quando marcado */
+    margin-bottom: 10px;
 }
 
 /* .instituicaoDoar input[type='checkbox']:checked {
@@ -579,10 +572,76 @@ hr {
     margin: 0px 20px 20px 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: #3C474D;
+    text-decoration: none!important;
+}
+
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
     [class*="col-"] {
         width: 100%;
-    }    
+    } 
+    
+    .login {
+        width: 90% !important;
+    }
+
+    .btnLogin {
+        width: 40% !important;
+        height: 45px !important;
+    }
+
+    header img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .voltar img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    .containerDoacao  {
+        width: 90%;
+    }
+
+    .titulo-texto {
+        font-size: large;
+    }
+
+    .form-group {
+        font-size: medium;
+    }
+
+    .infoItens h3 {
+        font-size: medium;
+    }
+
+    .containerDoacao .item {
+        flex-wrap: wrap;
+        min-height: fit-content!important;
+        justify-content: space-around;
+        width: 80%;
+    }
+    
+    .instituicao .btn, .item .btn {
+        margin: 0;
+        width: auto;
+        height: auto;
+        background-color: #738B93;
+    }
+
+    .infoItens {
+        width: max-content;
+    }
+
+    .infoItens .form-group {
+        flex-wrap: wrap;
+    }
 
     .login, form {
         width: 95%;    
@@ -597,8 +656,77 @@ hr {
     }
 
     main {
-        height: auto;  
+        min-height: calc(100vh - 10vh); /* evita sobreposição do header */
       }
+
+      .search input {
+        width: 90%;
+      }
+
+      .form-control {
+        font-size: medium;
+      }
+
+      .instituicaoDoar {
+        width: 90%;
+      }
+
+      .infoInstituicaoDoar {
+        text-align: left;
+      }
+
+      .infoInstituicaoDoar h4 {
+        font-size: small;
+      }
+
+      .instituicaoDoar input[type='checkbox'] {
+        width: 10%;
+      }
+
+    .containerDoacao .infoItens input {
+        height: 40px;
+        width: 40px;
+    }
+
+    .instituicao img:not(.icon), .doador img:not(.icon), .item img:not(.icon)  {
+        width: 60px;
+        height: 60px;
+    }
+
+    .formFrete {
+        width: 90%;
+    }
+
+    .menu li {
+        width: 70px;
+        height: 70px;
+    }
+
+    .menu img {
+        width: 65px;
+        height: 65;
+    }
+
+    .menu li:hover {
+        height:70px;
+    }
+
+    .menu li:hover .texto {
+        font-size: large;
+    }
+
+    /*criar animações*/
+    @keyframes aumentar {
+        0% {
+            padding-left: 5px;
+            width: 100px;
+        }
+        100% {
+            width: 300px;
+            padding-left: 5px;
+        }
+    }
+      
 }
 
 @media only screen and (min-width: 768px) {/*DESKTOPS*/
@@ -617,7 +745,15 @@ hr {
     .col-12 {width: 100%;}
 
     main {
-      height: auto;  
+        min-height: calc(100vh - 10vh); /* evita sobreposição do header */ 
+    }
+
+    .infoItens {
+        width: 100%;
+    }
+
+    .infoItens .form-group {
+        flex-wrap: wrap;
     }
 
     .login, form {
@@ -629,13 +765,13 @@ hr {
     }
 
     .voltar img {
-        height: 30px;
-        width: 30px;
+        height: 50px;
+        width: 50px;
     }
     
     .perfil img {
-        height: 40px;
-        width: 40px;
+        height: 60px;
+        width: 60px;
         border-radius: 50%;
     }
 }
