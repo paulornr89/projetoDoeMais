@@ -95,11 +95,4 @@
         $resultado = $controller->consultarPorEmail($_SESSION['usuario_id']);//$_GET['email'] para testar
         echo json_encode($resultado);
     }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'registrarDoacao') {
-        $controller = new UsuarioController();
-        $resultado = $controller->consultarPorEmail($_SESSION['usuario_id']);//$_GET['email'] para testar
-        echo json_encode($resultado);
-    }
-
 ?>

@@ -52,19 +52,19 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Data:</label>
-                            <input type="date" class="form-control" id="dataColeta" name="dataColeta" required/>
+                            <input type="date" class="form-control obrigatorio" id="dataColeta" name="dataColeta"/>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label>Horário:</label>
-                            <input type="text" class="form-control" id="horario" name="horario" required/>
+                            <input type="text" class="form-control obrigatorio" id="horario" name="horario"/>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label>CEP:</label>
-                            <input type="text" class="form-control" id="cep" name="cep" required/>
+                            <input type="text" class="form-control obrigatorio" id="cep" name="cep"/>
                         </div>
                     </div>
                 </div>
@@ -101,6 +101,10 @@
                 <button class="btnSalvarDoacao btn" type="submit">Salvar</button>
             </div>
         </form>
+        <div class="doacaoConcluida efeitoMostrar --hide">
+            <h3>Doação Registrada com Sucesso!</h3>
+            <h4>Você será redirencionado para o menu em instantes.</h4>
+        </div>
     </main>
     <script type="text/javascript" src="./mainDoacao.js"></script>
 </body>

@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         id : e.querySelector("input[id^='id']").value,
                         quantidade: e.querySelector("input[id^='quantidade']").value
                     });
-                    // console.log("id: " + e.querySelector("input[id^='id']").value)
-                    // console.log("quantidade: " + e.querySelector("input[id^='quantidade']").value)
                 }
             });
     
@@ -172,21 +170,71 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelector("#tipoFrete").onchange = (e) => {
             if(e.target.value != "Sim") {
                 document.querySelector(".infoFrete").classList.remove("--hide");
+                if(e.target.value == "Não") {
+                    console.log("entrou")
+                    document.querySelectorAll(".obrigatorio").forEach((el) => {
+                        el.required = true;
+                    })
+                }
             } else {
                 document.querySelector(".infoFrete").classList.add("--hide");
             }
         }
 
-        document.querySelector(".formFrete").onsubmit = (e) => {
+        document.querySelector(".formFrete").onsubmit = async (e) => {
             e.preventDefault();
             console.log("enviou")
-            const formData = new FormData(); // Coleta tudo automaticamente        
-            formData.append('id_usuario', sessionStorage.getItem("id_usuario"));        
-            formData.append('id_instituicao', );
+            console.log(sessionStorage)
+            const formDataDoacao = new FormData(); // Coleta tudo automaticamente        
+            formDataDoacao.append('id_doador', sessionStorage.getItem("id_usuario"));        
+            formDataDoacao.append('id_instituicao', sessionStorage.getItem("instituicao"));
+            formDataDoacao.append('status', 'P');
 
-            fetch('../../../public/index.php?action=registrarDoacao',{
-                method: 'POST'
+
+            const falhas = await fetch('../../../public/index.php?action=registrarDoacao',{
+                method: 'POST',
+                body: formDataDoacao
             })
+            .then(response => response.json())
+            .then(async data => {
+                console.log(data.id);
+                const itens = JSON.parse(sessionStorage.getItem('itens'));
+                console.log(itens)
+                let countFalha = 0;
+                for(item of itens) {
+                    if(item.quantidade > 0) {
+                        const formDataItens = new FormData();
+                        formDataItens.append('id_doacao', data.id);
+                        formDataItens.append('id_item', item.id);
+                        formDataItens.append('quantidade', item.quantidade);
+
+                        const retorno = fetch('../../../public/index.php?action=registrarDoacaoItem',{
+                            method: 'POST',
+                            body: formDataItens    
+                        })
+                        .then(response => response.json())
+                        .catch(error => console.log(error))
+
+                        if(retorno.status == "success") {
+                            countFalha += 1;
+                        }
+                    }
+                } 
+                return countFalha               
+            })
+            .catch(error => console.log(error));
+            
+            console.log("falhas: " + falhas);
+
+            if(falhas == 0) {
+                document.querySelector(".formFrete").style.display = "none";
+                document.querySelector(".doacaoConcluida").classList.remove('--hide');
+                setTimeout(() => {
+                     window.location.href = "../../../public/menuDoador.php";   
+                }, 5000);
+            } else {
+                alert("falha ao registra itens");
+            }
         }
     }
 });
