@@ -2,6 +2,7 @@ create table usuarios (
 	id serial primary key,
 	email varchar(100) unique not null,
 	senha varchar(255) not null,
+	imagem varchar(50),
 	tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('D', 'I')),--D é doador e I é instituicao
     criado_em TIMESTAMP not null default current_timestamp
 )

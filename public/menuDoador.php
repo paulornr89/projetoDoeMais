@@ -26,14 +26,14 @@
     <header>
         <a href="../public/logout.php" class="voltar"><img src="../public/assets/arrow.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../public/assets/perfil.png"></a>
+        <a class="perfil"><img src="../public/assets/perfilDefault.png"></a>
     </header>
     <main>
         <ul class="menu">
             <li><a target="_self" href="../app/views/doacao/doacaoItens.php"><div class="icone"><img src="../public/assets/doar.svg"></div><div class="texto">Realizar Doação</div></a></li>
             <li><div class="icone"><img src="../public/assets/instituicao.svg"></div><div class="texto">Instituições e Projetos</div></li>
             <li><div class="icone"><img src="../public/assets/bell.svg"></div><div class="texto">Notificações</div></li>
-            <li><div class="icone"><img src="../public/assets/editarPerfil.svg"></div><div class="texto">Alterar Perfil</div></li>
+            <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"></div><div class="texto">Alterar Perfil</div></a></li>
         </ul>
     </main>
     <script>

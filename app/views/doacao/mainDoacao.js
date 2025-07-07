@@ -230,7 +230,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.querySelector(".formFrete").style.display = "none";
                 document.querySelector(".doacaoConcluida").classList.remove('--hide');
                 setTimeout(() => {
-                     window.location.href = "../../../public/menuDoador.php";   
+                    sessionStorage.clear();
+                    window.location.href = "../../../public/menuDoador.php";   
                 }, 5000);
             } else {
                 alert("falha ao registra itens");

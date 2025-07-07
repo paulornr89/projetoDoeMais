@@ -610,6 +610,29 @@ a:visited {
     box-shadow: 3px 3px 10px;
 }
 
+.container {
+    background-color: #68E8C2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;    
+    width: 30%;
+    box-shadow: 3px 3px 10px; 
+}
+
+.container .row:last-child {
+    justify-content: center;
+}
+
+.imagePerfil img{
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+}
+
+.container .form-control {
+    height: 40px;
+}
+
 @media only screen and (max-width: 768px) {/*SMARTPHONES*/
     [class*="col-"] {
         width: 100%;

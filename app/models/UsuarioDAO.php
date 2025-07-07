@@ -24,7 +24,7 @@
             $usuarioAtual = $this->consultarPorId($id);
         
             // Se senha nova for diferente da antiga (comparando com hash), atualiza com novo hash
-            if (!password_verify($novaSenha, $usuarioAtual->getSenha())) {
+            if ((!password_verify($novaSenha, $usuarioAtual->getSenha()) && ($novaSenha != ""))) {
                 $novaSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
             } else {
                 $novaSenha = $usuarioAtual->getSenha(); // mantém a hash antiga
