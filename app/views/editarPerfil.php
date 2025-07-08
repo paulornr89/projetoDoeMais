@@ -27,18 +27,26 @@
     <header>
         <a target="_self" href="../../public/menuDoador.php" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../public/assets/perfil.png"></a>
+        <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
         <form class="container">
             <div class="imagePerfil">
-                <img src="../../public/assets/perfilDefault.png">
+                <img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="imagemPerfil">Alterar Imagem:</label>
+                        <input type="file" name="perfil" id="perfil" accept="image/*">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
                         <label>Nome:</label>  
-                        <input type="text" class="form-control" id="nome" name="nome"/>
+                        <input type="text" class="form-control" id="nome" name="nome" readonly/>
                     </div>
                 </div>                    
             </div>
@@ -80,7 +88,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label>UF:</label>  
-                        <input type="text" class="form-control" id="uf" name="uf"/>
+                        <input type="text" class="form-control" id="uf" name="uf" readonly/>
                     </div>
                 </div>                    
             </div>
@@ -88,7 +96,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label>Cidade:</label>  
-                        <input type="text" class="form-control" id="cidade" name="cidade"/>
+                        <input type="text" class="form-control" id="cidade" name="cidade" readonly/>
                     </div>
                 </div>                    
             </div>

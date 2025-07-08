@@ -27,7 +27,7 @@
     <header>
         <a class="voltar" href="../../public/menuAdmin.php"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../public/assets/perfil.png"></a>
+        <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
         <form class="cadastro" action="cadastrarItem" method="post">

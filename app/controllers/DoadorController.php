@@ -39,7 +39,7 @@ class DoadorController {
 
     public function atualizar($dados) {
         $usuarioDao = new UsuarioDAO();
-        $usuarioAtualizado = $usuarioDao->atualizar($dados['id_usuario'], $dados['email'], $dados['senha'], 'D');
+        $usuarioAtualizado = $usuarioDao->atualizar($dados['id_usuario'], $dados['email'], $dados['senha'], 'D', $dados['imagem']);
     
         $doador = new Doador($dados['id_usuario'], $dados['nome'], $dados['cpf_cnpj'], $dados['telefone'],
             $dados['cep'], $dados['endereco'], $dados['cidade'], $dados['uf'], $dados['tipo']);    

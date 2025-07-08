@@ -104,6 +104,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <button id="deletar_${i}" class="btn btnItem" onclick="deletarItem(id)"><img class="icon" src="../../public/assets/excluir.svg" alt="Ícone" style="width: 20px; height: 20px;"></button>
                     </div>
                 `;
+                console.log(divListaItens);
+                console.log(novoElemento)
                 divListaItens.appendChild(novoElemento)
             }
         })
@@ -185,11 +187,27 @@ document.addEventListener('DOMContentLoaded', async () => {
             formData.append('cpf_cnpj', document.querySelector("#cpf_cnpj").value);
             formData.append('email', document.querySelector("#email").value);
             formData.append('senha', "");
-
+            if (document.querySelector("#perfil").files.length > 0) {
+                formData.append('perfil', document.querySelector("#perfil").files[0]); // usa 'perfil'
+            }
             fetch('../../public/index.php?action=atualizarDoador', {
                 method: 'POST',
                 body: formData
             })
+            .then(e => {
+                    window.location.href = "./editarPerfil.php";
+            })
+            .catch(error => console.log(error));
+
+            // if(document.querySelector("#perfil").files.length > 0) {
+            //     const imageFormData = new FormData();
+            //     imageFormData.append("perfil", document.querySelector("#perfil").files[0]);
+
+            //     fetch('../../public/index.php?action=atualizarImagem', {
+            //         method: 'POST',
+            //         body: imageFormData
+            //     })                
+            // }
         }
 
         document.querySelector("#telefone").onkeyup = async (e) => {//mascara telefone
@@ -246,6 +264,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 console.log("CEP inválido");
             }
+        }
+
+        document.querySelector(".imagePerfil").onclick = (e) => {
 
         }
     }

@@ -26,7 +26,7 @@
     <header>
         <a href="./public/logout.php" class="voltar"><img src="./public/assets/arrow.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="./public/assets/perfil.png"></a>
+        <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
     <main>
         <ul class="menu">

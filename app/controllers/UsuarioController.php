@@ -22,6 +22,8 @@ class UsuarioController {
         if ($usuario && password_verify($dados['senha'], $usuario->getSenha())) {
             $_SESSION['usuario_id'] = $usuario->getEmail(); // ou ID, se tiver
             $_SESSION['usuario_tipo'] = $usuario->getTipo();
+            $_SESSION['id'] = $usuario->getId();
+            $_SESSION['imagem'] = $usuario->getImagem();
 
             if($usuario->getEmail() == 'paulornr89@gmail.com'){
                 header('Location: /projetoDoar/public/menuAdmin.php');

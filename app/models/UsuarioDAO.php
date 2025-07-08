@@ -20,7 +20,7 @@
             return $this->pdo->lastInsertId();
         }
 
-        public function atualizar($id, $novoEmail, $novaSenha, $tipo) {
+        public function atualizar($id, $novoEmail, $novaSenha, $tipo, $imagem) {
             $usuarioAtual = $this->consultarPorId($id);
         
             // Se senha nova for diferente da antiga (comparando com hash), atualiza com novo hash
@@ -30,11 +30,12 @@
                 $novaSenha = $usuarioAtual->getSenha(); // mantém a hash antiga
             }
         
-            $sql = "UPDATE usuarios SET email = :email, senha = :senha WHERE id = :id";
+            $sql = "UPDATE usuarios SET email = :email, senha = :senha, imagem = :imagem WHERE id = :id";
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute([
                 ':email' => $novoEmail,
                 ':senha' => $novaSenha,
+                ':imagem' => $imagem,
                 ':id'    => $id
             ]);
         }
@@ -45,7 +46,7 @@
             $dados = $stmt->fetch();
         
             if ($dados) {
-                $usuario = new Usuario($dados['email'], '', $dados['tipo']);
+                $usuario = new Usuario($dados['email'], '', $dados['tipo'], $dados['id'], $dados['imagem']);
                 $usuario->setSenhaHash($dados['senha']);
                 return $usuario;
             }
@@ -64,7 +65,7 @@
             $dados = $stmt->fetch();
 
             if($dados) {
-                $usuario = new Usuario($dados['email'], '', $dados['tipo'], $dados['id']);
+                $usuario = new Usuario($dados['email'], '', $dados['tipo'], $dados['id'], $dados['imagem']);
                 $usuario->setSenhaHash($dados['senha']);
                 return $usuario;
             }
