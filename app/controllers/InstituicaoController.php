@@ -23,6 +23,22 @@ class InstituicaoController {
         }
     }
 
+     public function atualizar($dados) {
+        $usuarioDao = new UsuarioDAO();
+        $usuarioAtualizado = $usuarioDao->atualizar($dados['id_usuario'], $dados['email'], $dados['senha'], 'I', $dados['imagem']);
+    
+        $instituicao = new Instituicao ($dados['id_usuario'], $dados['razao'], $dados['nome_fantasia'], $dados['cnpj'], $dados['telefone'],
+            $dados['cep'], $dados['endereco'], $dados['cidade'], $dados['uf']);    
+        $instituicaoDao = new InstituicaoDAO();
+        $instituicaoAtualizado = $instituicaoDao->atualizar($instituicao);
+    
+        if ($usuarioAtualizado && $instituicaoAtualizado) {
+            return ['status' => 'success', 'message' => 'Instituicao e usuario atualizados com sucesso!'];
+        } else {
+            return ['status' => 'error', 'message' => 'Erro ao atualizar dados.'];
+        }
+    }
+
     public function listar() {
         $dao = new InstituicaoDAO();
         $instituicoes = $dao->listarInstituicoes();

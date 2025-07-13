@@ -24,13 +24,13 @@
 </head>
 <body>
     <header>
-        <a href="./logout.php" class="voltar"><img src="./assets/arrow.png"></a>
+        <a href="./menuDoador.php" class="voltar"><img src="./assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
     <main>
         <ul class="menu">
-            <li><a target="_self" href="../app/views/cadastroItens.php"><div class="icone"><img src="/projetoDoar/public/assets/itensMenu.svg"></div><div class="texto">Cadastrar Itens</div></a></li>
+            <li><a target="_self" href="../app/views/cadastroItens.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Cadastrar Itens</div></a></li>
             <li><a target="_self" href="../app/views/listarItens.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Itens</div></a></li>
             <li><a target="_self" href="../app/views/listarInstituicoes.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Instituições</div></a></li>
             <li><a target="_self" href="../app/views/listarDoadores.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg"></div><div class="texto">Listar Doadores</div></a></li>

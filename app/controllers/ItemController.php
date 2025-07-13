@@ -4,7 +4,7 @@ require_once __DIR__ . '/../models/ItemDAO.php';
 
 class ItemController {
     public function cadastrar($dados) {
-        $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade']);
+        $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade'], $dados['imagem']);
         $dao = new ItemDAO();
         if ($dao->inserir($item)) {
             return ['status' => 'success', 'message' => 'Item cadastrado com sucesso!'];
@@ -20,7 +20,7 @@ class ItemController {
     }
 
     public function atualizar($dados) {
-        $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade']);
+        $item = new Item($dados['descricao'], $dados['tipo'], $dados['unidade'], $dados['imagem']);
         $id = $dados['id'];
         $dao = new ItemDAO();
         if ($dao->atualizar($item, $id)) {

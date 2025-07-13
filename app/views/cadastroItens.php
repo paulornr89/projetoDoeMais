@@ -62,6 +62,14 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="imagemItem">Inserir Imagem:</label>
+                        <input type="file" name="imagemItem" id="imagemItem" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <button class="btnCancelar btn" type="reset">Cancelar</button>
                 <button class="btnSalvar btn" type="submit">Incluir</button>
             </div>

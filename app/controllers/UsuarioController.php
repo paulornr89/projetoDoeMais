@@ -25,9 +25,10 @@ class UsuarioController {
             $_SESSION['id'] = $usuario->getId();
             $_SESSION['imagem'] = $usuario->getImagem();
 
-            if($usuario->getEmail() == 'paulornr89@gmail.com'){
-                header('Location: /projetoDoar/public/menuAdmin.php');
-            } else if($usuario->getTipo() == 'D'){
+            // if($usuario->getEmail() == 'paulornr89@gmail.com'){
+            //     header('Location: /projetoDoar/public/menuAdmin.php');
+            // } else 
+            if($usuario->getTipo() == 'D'){
                header('Location: /projetoDoar/public/menuDoador.php');
             } else if($usuario->getTipo() == 'I'){
                 header('Location: /projetoDoar/public/menuInstituicao.php');

@@ -219,6 +219,7 @@ header .perfil {
 .menu {
     list-style: none;
     width: 70%;
+    margin-top: 20px;
 }
 
 .menu li {
@@ -315,10 +316,6 @@ header .perfil {
     margin: 20px auto 20px auto;
 }
 
-/* .mostrarItens {
-    width: 60%;
-} */
-
 .infoInstituicao, .infoDoador {
     padding: 20px;
     display: flex;
@@ -358,11 +355,8 @@ header .perfil {
     gap: 20px;
 }
 
-
-
 .instituicao, .doador, .item {
     background-color: #68C8E8;
-    width: 50%;
     border-radius: 5px;
     display: flex;
     align-self: center;
@@ -372,10 +366,6 @@ header .perfil {
     transition: transform 0.3s;
 }
 
-/* .item {
-    height: 140px;
-} */
-
 .instituicao:hover, .doador:hover, .item:hover, .instituicaoDoar:hover {
     transform: scale(1.03);
 }
@@ -384,7 +374,7 @@ header .perfil {
     height: 80px;
     width: 80px;
     background-color: white;
-    padding: 5px;
+    /*padding: 5px;*/
     align-items: center;
     border-radius: 5px;
     margin: auto 10px auto 10px;
@@ -649,6 +639,7 @@ a:visited {
     header img {
         width: 40px !important;
         height: 40px !important;
+        border-radius: 50%;
     }
 
     .voltar img {
@@ -695,7 +686,7 @@ a:visited {
     }
 
     .login, form {
-        width: 95%;    
+        width: 95% !important;    
     }
 
     form label {
@@ -780,7 +771,7 @@ a:visited {
 
     /*INSTITUICOES, DOADORES E ITENS*/
     .mostrarInstituicoes, .mostrarDoadores, .mostrarItens {
-        width: 60%;
+        width: 80%;
     }
 
     .instituicao {
@@ -790,7 +781,24 @@ a:visited {
     .infoInstituicao {
         font-size: small !important;
     }
+
+    .item {
+        width: 90%;
+        padding: 10px 0px 10px 0px;
+    }
       
+    .item .btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mostrarBotoes {
+        gap: 10px;
+    }
+
+    input[type='file'] {
+        font-size: x-small;
+    }
 }
 
 @media only screen and (min-width: 768px) {/*DESKTOPS*/
@@ -812,6 +820,10 @@ a:visited {
         min-height: calc(100vh - 10vh); /* evita sobreposição do header */ 
     }
 
+    .item {
+        padding: 10px;
+    }
+
     .infoItens {
         width: 100%;
     }
@@ -820,7 +832,7 @@ a:visited {
         flex-wrap: wrap;
     }
 
-    .login, form {
+    .login, form:not(.cadastro) {
         width: 35%;
     }
 
@@ -846,6 +858,18 @@ a:visited {
     .infoInstituicao {
         font-size: small !important;
     }
+    .mostrarBotoes {
+        gap: 10px;
+    }
+
+    .item {
+        gap: 10px;
+    }
+
+    .mostrarItens {
+        width: 80%;
+    }
+    
 }
 
 @media only screen and (max-width: 600px) {/*TABLETS*/    
@@ -877,5 +901,30 @@ a:visited {
 
     form label { 
         word-wrap: break-word; 
+    }
+
+     .item {
+        flex-direction: column;  
+        gap: 10px;    
+        padding: 10px 0px 10px 0px;
+    }
+
+    .mostrarItens {
+        width: 90%;
+    }
+
+    .infoItens {
+        width: 80%;
+    }
+
+    .item .mostrarBotoes {
+        flex-direction: row;
+        width: 80%;
+        justify-content: space-around;
+    }
+
+    .item .btn {
+        width: 40px;
+        height: 40px;
     }
 }

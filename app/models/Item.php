@@ -3,12 +3,14 @@ class Item {
     private $descricao;
     private $tipo;
     private $unidade;
+    private $imagem;
 
 
-    public function __construct($descricao, $tipo, $unidade) {
+    public function __construct($descricao, $tipo, $unidade, $imagem = null) {
         $this->descricao = $descricao;
         $this->tipo = $tipo;
         $this->unidade = $unidade;
+        $this->imagem = $imagem;
     }
     
     public function getDescricao() {
@@ -22,6 +24,10 @@ class Item {
     public function getUnidade() {
         return $this->unidade;
     }
+
+    public function getImagem() {
+        return $this->imagem;
+    }
         
     public function setDescricao($descricao) {
         $this->descricao = $descricao;
@@ -33,6 +39,10 @@ class Item {
 
     public function setUnidade($unidade) {
         $this->unidade = $unidade;
+    } 
+
+    public function setImagem($imagem) {
+        $this->imagem = $imagem;
     } 
 }
 ?>

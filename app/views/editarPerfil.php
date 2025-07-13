@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'D') {
+    if (!isset($_SESSION['usuario_id'])) {
         header('Location: logout.php');
         exit;
     }
@@ -25,14 +25,20 @@
 </head>
 <body>
     <header>
-        <a target="_self" href="../../public/menuDoador.php" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        <a target="_self" href="../../public/<?php 
+            if($_SESSION['usuario_tipo'] == 'D') {
+                echo "menuDoador";
+            } else {
+                echo "menuInstituicao";
+            }
+        ?>.php" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
+        <a class="perfil"><img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
         <form class="container">
             <div class="imagePerfil">
-                <img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
+                <img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
             </div>
             <div class="row">
                 <div class="col-12">
@@ -45,8 +51,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <label>Nome:</label>  
-                        <input type="text" class="form-control" id="nome" name="nome" readonly/>
+                        <?php
+                            if($_SESSION['usuario_tipo'] == 'D') {
+                                echo '<label>Nome:</label>';
+                                echo '<input type="text" class="form-control" id="nome" name="nome" readonly/>';
+                            } else {
+                                echo '<label>Razão:</label>';
+                                echo '<input type="text" class="form-control" id="razao" name="razao" readonly/>';;
+                            }                            
+                        ?>
                     </div>
                 </div>                    
             </div>
@@ -101,13 +114,25 @@
                 </div>                    
             </div>
             <input type="hidden" id="id_usuario" name="id_usuario"/>
-            <input type="hidden" id="tipo" name="tipo"/>
-            <input type="hidden" id="cpf_cnpj" name="cpf_cnpj"/>
+            <?php
+                if($_SESSION['usuario_tipo'] == 'D') {
+                    echo '<input type="hidden" id="tipo" name="tipo"/>';
+                    echo '<input type="hidden" id="cpf_cnpj" name="cpf_cnpj"/>';
+                } else {
+                    echo '<input type="hidden" id="cnpj" name="cnpj"/>';
+                    echo '<input type="hidden" id="nome_fantasia" name="nome_fantasia"/>';
+                }  
+            ?>
+            <input type="hidden" id="tipoUsuario" name="tipoUsuario" value=<?php echo $_SESSION['usuario_tipo']; ?>/>
+            
             <div class="row">
                 <button class="btn btnSalvarDoacao" id="salvar">Salvar</button>
             </div>
         </form>            
     </main>
     <script type="text/javascript" src="./mainItens.js"></script>
+    <script>
+        console.log('<?php echo $_SESSION['imagem'];?>')
+    </script>
 </body>
 </html>

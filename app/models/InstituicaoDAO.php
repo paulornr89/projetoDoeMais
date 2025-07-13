@@ -24,6 +24,21 @@ class InstituicaoDAO {
         ]);
     }
 
+    public function atualizar(Instituicao $instituicao) {
+        $sql = "UPDATE instituicoes SET telefone = :telefone, cep = :cep, 
+                    endereco = :endereco, cidade = :cidade, uf = :uf WHERE id_usuario = :id_usuario";
+    
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id_usuario' => $instituicao->getIdUsuario(),
+            ':telefone' => $instituicao->getTelefone(),
+            ':cep' => $instituicao->getCep(),
+            ':endereco' => $instituicao->getEndereco(),
+            ':cidade' => $instituicao->getCidade(),
+            ':uf' => $instituicao->getUf()
+        ]);
+    }
+
     public function listarInstituicoes() {
         $sql = "SELECT * FROM instituicoes";
         $stmt = $this->pdo->query($sql);

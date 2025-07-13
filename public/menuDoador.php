@@ -24,7 +24,7 @@
 </head>
 <body>
     <header>
-        <a href="../public/logout.php" class="voltar"><img src="../public/assets/arrow.png"></a>
+        <a href="./logout.php" class="voltar"><img src="../public/assets/arrow.png"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
@@ -34,6 +34,12 @@
             <li><div class="icone"><img src="../public/assets/instituicao.svg"></div><div class="texto">Instituições e Projetos</div></li>
             <li><div class="icone"><img src="../public/assets/bell.svg"></div><div class="texto">Notificações</div></li>
             <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"></div><div class="texto">Alterar Perfil</div></a></li>
+            <?php
+                if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
+                    echo '<li><a target="_self" href="./menuAdmin.php"><div class="icone"><img src="./assets/default.svg"></div><div class="texto">Menu Admin</div></a></li>';
+                    
+                }
+            ?>
         </ul>
     </main>
     <script>
