@@ -140,6 +140,8 @@
                 echo json_encode(['success' => false, 'error' => 'Erro ao mover imagem.']);
                 exit;
             }
+        } else {
+            $_POST['imagem'] = $_SESSION['imagem'];
         }
 
         $controller = new DoadorController();
@@ -165,6 +167,8 @@
                 echo json_encode(['success' => false, 'error' => 'Erro ao mover imagem.']);
                 exit;
             }
+        } else {
+            $_POST['imagem'] = $_SESSION['imagem'];
         }
 
         $controller = new InstituicaoController();

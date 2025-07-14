@@ -539,7 +539,6 @@ header .perfil {
 }
 
 .formFrete {
-    width: 70%;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -918,6 +917,29 @@ a:visited {
         border-radius: 50%;
     }
 
+    .listaDoadores .doador {
+        width: 90%;
+        flex-wrap: wrap;
+        text-wrap: wrap;
+    }
+
+    .infoDoador {
+        flex-wrap: wrap;
+    }
+
+    .infoInstituicao {
+        flex-wrap: wrap;
+        text-wrap: wrap;
+    }
+
+    .mostrarInstituicoes {
+        width: 95%;
+    }
+
+    .mostrarInstituicoes .instituicao {
+        flex-wrap: wrap;
+    }
+
 }
 
 @media only screen and (min-width: 768px) {/*DESKTOPS*/
@@ -950,6 +972,14 @@ a:visited {
     .containerDoacao .item {
         width: 60%;
     }
+
+    .mostrarItens .item {
+        width: 90%;
+    }
+
+    .mostrarDoadores {
+        width: 65%
+    }
     
     .containerDoacao .doacao {
         width: 85%;
@@ -970,6 +1000,10 @@ a:visited {
         width: 40%;
     }
 
+    .cadastro {
+        margin: 20px auto 20px auto;
+    }
+
     form label {
         word-wrap: unset; 
     }
@@ -986,12 +1020,17 @@ a:visited {
     }
 
     .instituicao {
+        width: 70%!important;
+    }
+    
+    .mostrarInstituicao {
         width: 80%!important;
     }
 
     .infoInstituicao {
         font-size: small !important;
     }
+
     .mostrarBotoes {
         gap: 10px;
     }
@@ -1008,6 +1047,10 @@ a:visited {
         width: 70px;
         height: 70px;
         border-radius: 50%;
+    }
+
+    .formFrete {
+        width: 75%!important;
     }
     
 }

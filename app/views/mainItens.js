@@ -193,58 +193,66 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(error => console.log(error));
 
         document.querySelector("#salvar").onclick = async (e) => {
-            e.preventDefault();
-            const formData = new FormData();
+            try {
+                e.preventDefault();
+                const formData = new FormData();
 
-            formData.append('id_usuario', document.querySelector("#id_usuario").value);
-            formData.append('telefone', document.querySelector("#telefone").value.replace(/\D/g, ""));
-            formData.append('cep', document.querySelector("#cep").value.replace(/\D/g, ""));
-            formData.append('endereco', document.querySelector("#logradouro").value);
-            formData.append('cidade', document.querySelector("#cidade").value);
-            formData.append('uf', document.querySelector("#uf").value);
-            formData.append('email', document.querySelector("#email").value);
-            formData.append('senha', "");
-            if (document.querySelector("#perfil").files.length > 0) {
-                formData.append('perfil', document.querySelector("#perfil").files[0]); // usa 'perfil'
-            }
-            let response = null;
-
-            if(document.querySelector("#tipoUsuario").value == "D"){
-                formData.append('nome', document.querySelector("#nome").value);
-                formData.append('tipo', document.querySelector("#tipo").value);
-                formData.append('cpf_cnpj', document.querySelector("#cpf_cnpj").value);
-                
-                response = await fetch('../../public/index.php?action=atualizarDoador', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response)
-                .catch(error => console.log(error));
-
-            } else {
-                formData.append('razao', document.querySelector("#razao").value);
-                formData.append('cnpj', document.querySelector("#cnpj").value);
-                formData.append('nome_fantasia', document.querySelector("#nome_fantasia").value);
-                
-                response = await fetch('../../public/index.php?action=atualizarInstituicao', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response)
-                .catch(error => console.log(error));
-                
-            }
-            
-            document.querySelectorAll(".perfilImagem").forEach((e) => {
-                if (e) {
-                    console.log(e.src)
-                    const srcBase = e.src.split("?")[0]; // remove qualquer ?t= antigo
-                    e.src = `${srcBase}?t=${new Date().getTime()}`; // força novo carregamento
+                formData.append('id_usuario', document.querySelector("#id_usuario").value);
+                formData.append('telefone', document.querySelector("#telefone").value.replace(/\D/g, ""));
+                formData.append('cep', document.querySelector("#cep").value.replace(/\D/g, ""));
+                formData.append('endereco', document.querySelector("#logradouro").value);
+                formData.append('cidade', document.querySelector("#cidade").value);
+                formData.append('uf', document.querySelector("#uf").value);
+                formData.append('email', document.querySelector("#email").value);
+                formData.append('senha', "");
+                if (document.querySelector("#perfil").files.length > 0) {
+                    formData.append('perfil', document.querySelector("#perfil").files[0]); // usa 'perfil'
                 }
-            })
+                let response = null;
 
-            console.log(await response.json())
-            location.reload();//window.location.href = "./editarPerfil.php";            
+                if(document.querySelector("#tipoUsuario").value == "D"){
+                    formData.append('nome', document.querySelector("#nome").value);
+                    formData.append('tipo', document.querySelector("#tipo").value);
+                    formData.append('cpf_cnpj', document.querySelector("#cpf_cnpj").value);
+                    
+                    response = await fetch('../../public/index.php?action=atualizarDoador', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response)
+                    .catch(error => console.log(error));
+
+                } else {
+                    formData.append('razao', document.querySelector("#razao").value);
+                    formData.append('cnpj', document.querySelector("#cnpj").value);
+                    formData.append('nome_fantasia', document.querySelector("#nome_fantasia").value);
+                    
+                    response = await fetch('../../public/index.php?action=atualizarInstituicao', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response)
+                    .catch(error => console.log(error));
+                    
+                }
+
+                
+                document.querySelectorAll(".perfilImagem").forEach((e) => {
+                    if (e) {
+                        console.log(e.src)
+                        const srcBase = e.src.split("?")[0]; // remove qualquer ?t= antigo
+                        e.src = `${srcBase}?t=${new Date().getTime()}`; // força novo carregamento
+                    }
+                })
+
+                //console.log(await response.text())
+                console.log(await response.json())
+                alert("Perfil atualizado com sucesso!")
+                location.reload();//window.location.href = "./editarPerfil.php";            
+            } catch(e) {
+                alert("Falha ao atualizar perfil");
+                console.log(e);
+            }
         }
 
         document.querySelector("#telefone").onkeyup = async (e) => {//mascara telefone

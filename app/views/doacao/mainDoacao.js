@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(data => data.response)
         .then(usuario => {
             console.log(usuario);       
-            document.querySelector("#cep").value = usuario.cep;
+            document.querySelector("#cep").value = usuario.cep.replace(/(\d{5})(\d+)/, "$1-$2");
             document.querySelector("#logradouro").value = usuario.endereco;
             document.querySelector("#cidade").value = usuario.cidade;
             document.querySelector("#uf").value = usuario.uf;
@@ -193,6 +193,60 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         })
         .catch(error => console.log(error));
+
+        /**mascara cep */
+        document.querySelector("#cep").onkeyup = (e) => {//mascara cep
+            let valor = document.querySelector("#cep").value;
+            // Remove todos os caracteres que não são dígitos
+            valor = valor.replace(/\D/g, "");
+
+            // Limita a 8 dígitos
+            if (valor.length > 8) {
+                valor = valor.substring(0, 8);
+            }
+
+            // Aplica a máscara dinamicamente
+            if (valor.length > 5) {
+                valor = valor.replace(/(\d{5})(\d+)/, "$1-$2");
+            }
+            document.querySelector("#cep").value = valor;
+        }
+
+        document.querySelector("#horario").onkeyup = (e) => {//mascara cep
+            let valor = document.querySelector("#horario").value;
+            // Remove todos os caracteres que não são dígitos
+            valor = valor.replace(/\D/g, "");
+
+            // Limita a 8 dígitos
+            if (valor.length > 4) {
+                valor = valor.substring(0, 4);
+            }
+
+            // Aplica a máscara dinamicamente
+            if (valor.length > 2) {
+                valor = valor.replace(/(\d{2})(\d+)/, "$1:$2");
+            }
+            document.querySelector("#horario").value = valor;
+        }
+
+        document.querySelector("#cep").onblur = async (e) => {
+            const cep = e.target.value.replace("-","");
+            console.log(cep)
+            if(cep.match(/(?=^.{8,8}$)(?=.*^[0-9]+$).*$/)){
+                const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(async data => {
+                    const dados = await data.json();
+                    console.log(dados)
+                    document.querySelector("#logradouro").value = dados.logradouro;
+                    document.querySelector("#uf").value = dados.uf;
+                    document.querySelector("#cidade").value = dados.localidade;
+                })
+                
+            } else {
+                console.log("CEP inválido");
+            }
+
+        }
 
         document.querySelector("#tipoFrete").onchange = (e) => {
             if(e.target.value != "Sim") {
