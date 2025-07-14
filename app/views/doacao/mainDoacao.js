@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("item")
                 novoElemento.innerHTML += `
-                    <img src="../../../public/assets/itens/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../../public/assets/itens.png'">
+                    <img src="../../../public/assets/itens/${lista.data[i].imagem}" alt="${lista.data[i].descricao}" onerror="this.onerror=null; this.src='../../../public/assets/itens.png'">
                     <div class="infoItens">
                         <h3>${lista.data[i].descricao} (${lista.data[i].unidade})</h3>
                         <div class="form-group">
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("instituicaoDoar")
                 novoElemento.innerHTML += `
-                    <img src="../../../public/assets/perfil/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../../public/assets/instituicao.svg'">
+                    <img src="../../../public/assets/perfil/${lista.data[i].imagem}" alt="${lista.data[i].razao}" onerror="this.onerror=null; this.src='../../../public/assets/instituicao.svg'">
                     <div class="infoInstituicaoDoar">
                         <h4>${lista.data[i].razao}</h4>
                         <input type="hidden" id="id_${i}" name="id_${i}" value="${lista.data[i].id}"/>
@@ -267,11 +267,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (path.includes('doacaoRecebida.php')) {
+        menuHamburguer();
         const response = await fetch('../../../public/index.php?action=listarDoacoes')
         .then(response => response.json())
         .then(response => response.dados)
         .then(dados => {
-            console.log(dados)
+            //console.log(dados)
             for(doacao of dados) {
                 console.log(doacao)
                 const doacaoElemento = document.createElement("div");
@@ -286,7 +287,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         document.querySelector("#pesquisaDoacao").onkeyup = (e) => {
             const doacaoPesquisada = removerAcentos(e.target.value);
-            console.log(doacaoPesquisada);
             document.querySelectorAll(".doacao .dataRecebida").forEach((el) => {
                 const dataPesquisada = el.textContent;
                 console.log(dataPesquisada)

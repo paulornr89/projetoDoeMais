@@ -31,9 +31,9 @@
             } else {
                 echo "../../public/menuAdmin.php";
             }
-        ?> class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        ?> class="voltar"><img src="../../public/assets/arrowIcon.png" alt="Voltar"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
+        <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" alt="Imagem de Perfil" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
         <button class="menuHamburguer">

@@ -936,7 +936,7 @@ a:visited {
     }
 
     .login, form:not(.cadastro) {
-        width: 50%;
+        width: 40%;
     }
 
     form label {

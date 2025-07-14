@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("item")
                 novoElemento.innerHTML += `
-                    <img src="../../public/assets/itens/${lista.data[i].imagem}" class="imagemItem" onerror="this.onerror=null; this.src='../../public/assets/itens.png'">
+                    <img src="../../public/assets/itens/${lista.data[i].imagem}" alt="${lista.data[i].descricao}"" class="imagemItem" onerror="this.onerror=null; this.src='../../public/assets/itens.png'">
                     <div class="infoItens">
                         <div class="form-group">
                             <label>Item:</label>
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("instituicao")
                 novoElemento.innerHTML += `
-                    <img class="perfilInstituicao" src="../../public/assets/perfil/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../public/assets/instituicao.svg'">
+                    <img class="perfilInstituicao" src="../../public/assets/perfil/${lista.data[i].imagem}" alt="${lista.data[i].razao}" onerror="this.onerror=null; this.src='../../public/assets/instituicao.svg'">
                     <div class="infoInstituicao">
                         <div class="coluna">
                             <p><strong>CNPJ: </strong> ${lista.data[i].cnpj}</p>
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("doador")
                 novoElemento.innerHTML += `
-                    <img src="../../public/assets/perfil/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
+                    <img src="../../public/assets/perfil/${lista.data[i].imagem}" alt="${lista.data[i].nome}" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
                     <div class="infoDoador">
                         <div class="coluna">
                             <p><strong>CPF: </strong> ${lista.data[i].cpf_cnpj}</p>

@@ -24,16 +24,16 @@
 </head>
 <body>
     <header>
-        <a href="./logout.php" class="voltar"><img src="./assets/arrow.png"></a>
+        <a href="./logout.php" class="voltar"><img src="./assets/arrow.png"  alt="Voltar"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
+        <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>"  alt="Imagem do Perfil" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
     <main>
         <ul class="menu">
             <!-- <a target="_self" href="../app/views/itens.php"></a> -->
-            <li><a target="_self" href="../app/views/doacao/doacaoRecebida.php"><div class="icone"><img src="./assets/default.svg"></div><div class="texto">Doações Recebidas</div></a></li>
-            <li><div class="icone"><img src="../public/assets/bell.svg"></div><div class="texto">Notificações</div></li>
-            <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"></div><div class="texto">Alterar Perfil</div></a></li>
+            <li><a target="_self" href="../app/views/doacao/doacaoRecebida.php"><div class="icone"><img src="./assets/default.svg" alt="Doações Recebidas"></div><div class="texto">Doações Recebidas</div></a></li>
+            <li><div class="icone"><img src="../public/assets/bell.svg" alt="Notificações"></div><div class="texto">Notificações</div></li>
+            <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"  alt="Alterar Perfil"></div><div class="texto">Alterar Perfil</div></a></li>
         </ul>
     </main>
 </body>

@@ -4,3 +4,7 @@
     $controller = new UsuarioController();
     $controller->autenticar($_POST);
 ?>
+
+<script>
+    sessionStorage.clear();
+</script>

@@ -31,9 +31,9 @@
             } else {
                 echo "menuInstituicao";
             }
-        ?>.php" class="voltar"><img src="../../public/assets/arrowIcon.png"></a>
+        ?>.php" class="voltar"><img src="../../public/assets/arrowIcon.png" alt="Voltar"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
+        <a class="perfil"><img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" alt="Imagem de Perfil" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
         <button class="menuHamburguer">
@@ -41,7 +41,7 @@
         </button>
         <form class="container">
             <div class="imagePerfil">
-                <img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
+                <img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" alt="Imagem Atual de Perfil" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
             </div>
             <div class="row">
                 <div class="col-12">
@@ -135,8 +135,13 @@
     </main>
     <nav id="menuLateral" class="menuLateral ">
         <ul>
-            <li><a href="./doacao/doacaoItens.php">Doação</a></li>
             <?php
+                if($_SESSION['usuario_tipo'] == 'D') {
+                    echo '<li><a href="./doacao/doacaoItens.php">Doação</a></li>';
+                } else {
+                    echo '<li><a href="./doacao/doacaoRecebida.php">Doação Recebida</a></li>';
+                }
+
                 if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
                     echo '<li><a href="./cadastroItens.php">Cadastrar Itens</a></li>';
                     echo '<li><a href="./listarItens.php">Alterar Itens</a></li>';
