@@ -68,6 +68,12 @@
         $resultado = $controller->listar();
         echo json_encode($resultado);
     }
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'listarDoacoes') {
+        $controller = new DoacaoController();
+        $resultado = $controller->listar($_SESSION['usuario_id']);
+        echo json_encode($resultado);
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] === 'atualizarItem') {
         if (isset($_FILES['imagemItem']) && $_FILES['imagemItem']['error'] === UPLOAD_ERR_OK) {

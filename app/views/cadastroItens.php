@@ -30,6 +30,9 @@
         <a class="perfil"><img src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
+        <button class="menuHamburguer">
+            <img src="../../public/assets/menuHam.png">
+        </button>
         <form class="cadastro" action="cadastrarItem" method="post">
             <div class="titulo">
                 <h2 class="titulo-texto">Cadastrar Item</h2>
@@ -75,6 +78,21 @@
             </div>
         </form>
     </main>
+    <nav id="menuLateral" class="menuLateral ">
+        <ul>
+            <li><a href="./editarPerfil.php">Perfil</a></li>
+            <li><a href="./doacao/doacaoItens.php">Doação</a></li>
+            <?php
+                if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
+                    echo '<li><a href="./cadastroItens.php">Cadastrar Itens</a></li>';
+                    echo '<li><a href="./listarItens.php">Alterar Itens</a></li>';
+                    echo '<li><a href="./listarDoadores.php">Visualizar Doadores</a></li>';
+                    echo '<li><a href="./listarInstituicoes.php">Visualizar Instituições</a></li>';
+                }   
+                ?>
+            <li><a href="../../../public/logout.php">Sair</a></li>
+        </ul>
+    </nav>
     <script type="text/javascript" src="./mainItens.js"></script>
 </body>
 </html>

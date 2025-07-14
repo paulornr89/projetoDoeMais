@@ -27,9 +27,12 @@
     <header>
         <a target="_self" href="./doacaoItens.php" class="voltar"><img src="../../../public/assets/arrowIcon.png"></a>
         <h2>Doe+</h2>
-        <a class="perfil"><img src="../../../public/assets/perfil.png"></a>
+        <a class="perfil"><img src="../../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
     <main>
+        <button class="menuHamburguer">
+            <img src="../../../public/assets/menuHam.png">
+        </button>
         <div class="containerDoacao">
             <div class="titulo">
                 <h2 class="titulo-texto">Para qual Instituição você deseja doar?</h2>
@@ -47,6 +50,20 @@
             </div>
         </div>
     </main>
+     <nav id="menuLateral" class="menuLateral ">
+        <ul>
+            <li><a href="../editarPerfil.php">Perfil</a></li>
+            <?php
+                if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
+                    echo '<li><a href="../cadastroItens.php">Cadastrar Itens</a></li>';
+                    echo '<li><a href="../listarItens.php">Alterar Itens</a></li>';
+                    echo '<li><a href="../listarDoadores.php">Visualizar Doadores</a></li>';
+                    echo '<li><a href="../listarInstituicoes.php">Visualizar Instituições</a></li>';
+                }   
+            ?>
+            <li><a href="../../../public/logout.php">Sair</a></li>
+        </ul>
+    </nav>
     <script type="text/javascript" src="./mainDoacao.js"></script>
 </body>
 </html>

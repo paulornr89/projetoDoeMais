@@ -40,7 +40,7 @@ class InstituicaoDAO {
     }
 
     public function listarInstituicoes() {
-        $sql = "SELECT * FROM instituicoes";
+        $sql = "SELECT us.id, razao, us.imagem, cnpj, telefone, cep, endereco, cidade, uf, nome_fantasia  FROM instituicoes i INNER JOIN usuarios us ON id = id_usuario ORDER BY razao ASC";
         $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

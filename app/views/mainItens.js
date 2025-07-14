@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const path = window.location.pathname;
 
     if (path.includes('cadastroItens.php')) {
+        menuHamburguer();
         document.querySelector(".cadastro").onsubmit = async (e) => {
             e.preventDefault();
             try {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } 
     
     if (path.includes('listarItens.php')) {
+        menuHamburguer();
         fetch('../../public/index.php?action=listarItens', {
             method: 'GET'
         })
@@ -78,6 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if(path.includes('listarInstituicoes.php')) {
+        menuHamburguer();
         fetch('../../public/index.php?action=listarInstituicoes', {
             method: 'GET'
         })
@@ -87,10 +90,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const divListaItens = document.querySelector(".listaInstituicoes");
     
             for(i=0; i < lista.data.length; i++) {
+                console.log(lista.data[i])
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("instituicao")
                 novoElemento.innerHTML += `
-                    <img src="../../public/assets/default.svg">
+                    <img class="perfilInstituicao" src="../../public/assets/perfil/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../public/assets/instituicao.svg'">
                     <div class="infoInstituicao">
                         <div class="coluna">
                             <p><strong>CNPJ: </strong> ${lista.data[i].cnpj}</p>
@@ -111,8 +115,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <button id="deletar_${i}" class="btn btnItem" onclick="deletarItem(id)"><img class="icon" src="../../public/assets/excluir.svg" alt="Ícone" style="width: 20px; height: 20px;"></button>
                     </div>
                 `;
-                console.log(divListaItens);
-                console.log(novoElemento)
                 divListaItens.appendChild(novoElemento)
             }
         })
@@ -120,6 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if(path.includes('listarDoadores.php')) {
+        menuHamburguer();
         fetch('../../public/index.php?action=listarDoadores', {
             method: 'GET'
         })
@@ -129,10 +132,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const divListaItens = document.querySelector(".listaDoadores");
     
             for(i=0; i < lista.data.length; i++) {
+                console.log(lista.data[i])
                 const novoElemento = document.createElement("div");
                 novoElemento.classList.add("doador")
                 novoElemento.innerHTML += `
-                    <img src="../../public/assets/default.svg">
+                    <img src="../../public/assets/perfil/${lista.data[i].imagem}" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
                     <div class="infoDoador">
                         <div class="coluna">
                             <p><strong>CPF: </strong> ${lista.data[i].cpf_cnpj}</p>
@@ -160,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if(path.includes('editarPerfil.php')) {
-
+        menuHamburguer();
         fetch('../../public/index.php?action=consultarPorEmail', {
             method: 'GET'
         })
@@ -169,13 +173,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(data => {
             console.log(data)
             if(document.querySelector("#tipoUsuario").value == "D"){
+                console.log("entrou")
                 document.querySelector("#nome").value = data.nome;
                 document.querySelector("#tipo").value = data.tipo;
                 document.querySelector("#cpf_cnpj").value = data.cpf_cnpj;
             } else {
                 document.querySelector("#razao").value = data.razao;
                 document.querySelector("#cnpj").value = data.cnpj;
-
+                document.querySelector("#nome_fantasia").value = data.nome_fantasia;
             }
 
             document.querySelector("#telefone").value = data.telefone.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");;
@@ -184,7 +189,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.querySelector("#uf").value = data.uf;
             document.querySelector("#cidade").value = data.cidade;
             document.querySelector("#id_usuario").value = data.id_usuario;
-            document.querySelector("#nome_fantasia").value = data.nome_fantasia;
         })
         .catch(error => console.log(error));
 
@@ -369,3 +373,19 @@ async function deletarItem(id) {
     }
 }
 
+function menuHamburguer() {
+     /**MENU HAMBURGUER */
+    const botaoMenu = document.querySelector('.menuHamburguer');
+    const menuLateral = document.getElementById('menuLateral');
+
+    botaoMenu.addEventListener('click', () => {
+        menuLateral.classList.toggle('--active');
+    });
+
+    // Opcional: fecha ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!menuLateral.contains(e.target) && !botaoMenu.contains(e.target)) {
+            menuLateral.classList.remove('--active');
+        }
+    });
+}

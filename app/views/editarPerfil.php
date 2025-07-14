@@ -36,6 +36,9 @@
         <a class="perfil"><img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'"></a>
     </header>
     <main>
+        <button class="menuHamburguer">
+            <img src="../../public/assets/menuHam.png">
+        </button>
         <form class="container">
             <div class="imagePerfil">
                 <img class="perfilImagem" src="../../public/assets/perfil/<?php echo $_SESSION['imagem']; ?>" onerror="this.onerror=null; this.src='../../public/assets/perfilDefault.png'">
@@ -123,16 +126,31 @@
                     echo '<input type="hidden" id="nome_fantasia" name="nome_fantasia"/>';
                 }  
             ?>
-            <input type="hidden" id="tipoUsuario" name="tipoUsuario" value=<?php echo $_SESSION['usuario_tipo']; ?>/>
+            <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="<?php echo $_SESSION['usuario_tipo']; ?>"/>
             
             <div class="row">
                 <button class="btn btnSalvarDoacao" id="salvar">Salvar</button>
             </div>
         </form>            
     </main>
+    <nav id="menuLateral" class="menuLateral ">
+        <ul>
+            <li><a href="./doacao/doacaoItens.php">Doação</a></li>
+            <?php
+                if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
+                    echo '<li><a href="./cadastroItens.php">Cadastrar Itens</a></li>';
+                    echo '<li><a href="./listarItens.php">Alterar Itens</a></li>';
+                    echo '<li><a href="./listarDoadores.php">Visualizar Doadores</a></li>';
+                    echo '<li><a href="./listarInstituicoes.php">Visualizar Instituições</a></li>';
+                }   
+                ?>
+            <li><a href="../../../public/logout.php">Sair</a></li>
+        </ul>
+    </nav>
     <script type="text/javascript" src="./mainItens.js"></script>
     <script>
         console.log('<?php echo $_SESSION['imagem'];?>')
+        console.log('<?php echo $_SESSION['usuario_tipo'];?>')
     </script>
 </body>
 </html>

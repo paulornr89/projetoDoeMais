@@ -31,21 +31,15 @@
     <main>
         <ul class="menu">
             <li><a target="_self" href="../app/views/doacao/doacaoItens.php"><div class="icone"><img src="../public/assets/doar.svg"></div><div class="texto">Realizar Doação</div></a></li>
-            <li><div class="icone"><img src="../public/assets/instituicao.svg"></div><div class="texto">Instituições e Projetos</div></li>
-            <li><div class="icone"><img src="../public/assets/bell.svg"></div><div class="texto">Notificações</div></li>
+            <!-- <li><div class="icone"><img src="../public/assets/instituicao.svg"></div><div class="texto">Instituições e Projetos</div></li> -->
+            <!-- <li><div class="icone"><img src="../public/assets/bell.svg"></div><div class="texto">Notificações</div></li> -->
             <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"></div><div class="texto">Alterar Perfil</div></a></li>
             <?php
                 if($_SESSION['usuario_id'] == 'paulornr89@gmail.com') {
-                    echo '<li><a target="_self" href="./menuAdmin.php"><div class="icone"><img src="./assets/default.svg"></div><div class="texto">Menu Admin</div></a></li>';
-                    
+                    echo '<li><a target="_self" href="./menuAdmin.php"><div class="icone"><img src="./assets/default.svg"></div><div class="texto">Menu Admin</div></a></li>';                    
                 }
             ?>
         </ul>
     </main>
-    <script>
-        if(sessionStorage.length > 0) {
-            sessionStorage.clear();
-        }
-    </script>
 </body>
 </html>

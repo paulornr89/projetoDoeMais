@@ -13,5 +13,21 @@
                 return ['status' => 'error', 'message' => 'Erro ao cadastrar doacao.'];
             }
         }
+
+        public function listar($email) {
+            $dao = new DoacaoDAO();
+            $doacoes = $dao->listar($email);
+
+            foreach ($doacoes as &$doacao) {
+                $doacao['nome'] = $this->nomeParcial($doacao['nome']);
+            }
+
+            return ['status' => 'success', 'dados' => $doacoes];
+        }
+
+        private function nomeParcial($nomeCompleto) {
+            $partes = explode(" ", $nomeCompleto);
+            return $partes[0] . (isset($partes[1]) ? ' ' . substr($partes[1], 0, 1) . '.' : '');
+        }
     }
 ?>

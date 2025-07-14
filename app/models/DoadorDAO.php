@@ -40,7 +40,7 @@ class DoadorDAO {
     }
 
     public function listarDoadores() {
-        $sql = "SELECT * FROM doadores";
+        $sql = "SELECT doa.*, u.imagem FROM doadores doa inner join usuarios u on id = id_usuario ";
         $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
