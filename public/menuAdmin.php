@@ -36,5 +36,6 @@
             <li><a target="_self" href="../app/views/listarDoadores.php"><div class="icone"><img src="/projetoDoar/public/assets/default.svg" alt="Listar Doadores"></div><div class="texto">Listar Doadores</div></a></li>
         </ul>
     </main>
+    <script type="text/javascript" src="../app/views/mainMenu.js"></script>
 </body>
 </html>

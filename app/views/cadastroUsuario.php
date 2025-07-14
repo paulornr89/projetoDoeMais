@@ -23,8 +23,10 @@
 <body class="fundoLogin">
     <main>
         <form class="cadastro" action="cadastrar" method="post">
-            <div class="titulo">
-                <h2 class="titulo-texto">Formulário de Cadastro</h2>
+            <div class="tituloCadastro titulo">
+                <a target="_self" href="../../public/menuAdmin.php" class="voltarCadastro"><img src="../../public/assets/arrowIcon.png" alt="Voltar"></a>
+                <h2 class="titulo-textoCadastro titulo-texto">Formulário de Cadastro</h2>
+                <div class="espaco-vazio"></div>
             </div>
             <div class="row">
                 <div class="col-6">

@@ -24,7 +24,7 @@
 </head>
 <body>
     <header>
-        <a href="./logout.php" class="voltar"><img src="../public/assets/arrow.png" alt="Voltar"></a>
+        <a href="./logout.php" class="voltar logout"><img src="../public/assets/arrow.png" alt="Voltar"></a>
         <h2>Doe+</h2>
         <a class="perfil"><img src="./assets/perfil/<?php echo $_SESSION['imagem']; ?>" alt="Imagem de Perfil" onerror="this.onerror=null; this.src='./assets/perfilDefault.png'"></a>
     </header>
@@ -41,5 +41,6 @@
             ?>
         </ul>
     </main>
+    <script type="text/javascript" src="../app/views/mainMenu.js"></script>
 </body>
 </html>

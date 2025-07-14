@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"/>
-                <span><a>Esqueceu sua senha?</a></span>
+                <!-- <span><a>Esqueceu sua senha?</a></span> -->
             </div>
             <div class="form-group">
                 <button type="submit" class="btnLogin">Login</button>

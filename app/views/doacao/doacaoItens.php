@@ -39,7 +39,7 @@
                     <h2 class="titulo-texto">O que você deseja doar?</h2>
                 </div>
                 <div class="search">
-                    <input type="text" class="form-control" id="pesquisaItens" name="pesquisaItens" placeholder="Digite uma data..."/>
+                    <input type="text" class="form-control" id="pesquisaItens" name="pesquisaItens" placeholder="Informe um item..."/>
                 </div>
                 <div class="listaItens">
                 </div>

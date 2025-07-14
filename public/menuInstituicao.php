@@ -36,5 +36,6 @@
             <li><a target="_self" href="../app/views/editarPerfil.php"><div class="icone"><img src="../public/assets/editarPerfil.svg"  alt="Alterar Perfil"></div><div class="texto">Alterar Perfil</div></a></li>
         </ul>
     </main>
+    <script type="text/javascript" src="../app/views/mainMenu.js"></script>
 </body>
 </html>

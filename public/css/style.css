@@ -940,6 +940,23 @@ a:visited {
         flex-wrap: wrap;
     }
 
+     /* .titulo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .voltar {
+        position: absolute;
+        left: 0;
+    }
+
+    .titulo-texto {
+        margin: 0;
+        text-align: center;
+    } */
+
 }
 
 @media only screen and (min-width: 768px) {/*DESKTOPS*/
@@ -1002,6 +1019,34 @@ a:visited {
 
     .cadastro {
         margin: 20px auto 20px auto;
+        width: 90%;
+    }
+
+    .tituloCadastro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .voltarCadastro {
+        position: absolute;
+        left: 0;
+    }
+
+    .voltarCadastro img {
+        width: 40px!important;
+        height: 40px!important;
+        transition: transform 0.3s;
+    }
+
+    .voltarCadastro img:hover {
+        transform: scale(1.1);
+    }
+
+    .titulo-textoCadastro {
+        margin: 0;
+        text-align: center;
     }
 
     form label {
