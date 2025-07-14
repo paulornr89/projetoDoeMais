@@ -21,7 +21,17 @@
         }
 
         public function listar($email) {
-            $sql = "SELECT nome, status, TO_CHAR(doa.criado_em, 'DD/MM/YYYY') as dataRecebida FROM doacoes doa INNER JOIN doadores ON id_usuario = id_doador inner join usuarios u on id_instituicao = u.id where u.email = :email ORDER BY doa.criado_em DESC";
+            $sql = "
+                SELECT nome, status, TO_CHAR(doa.criado_em, 'DD/MM/YYYY') as dataRecebida, string_agg(concat(i.descricao,' - ',di.quantidade), ',') as itemQuantidade
+                FROM doacoes doa 
+                INNER JOIN doadores ON id_usuario = id_doador 
+                INNER JOIN usuarios u ON id_instituicao = u.id 
+                INNER JOIN doacoes_itens di ON doa.id = di.id_doacao 
+                INNER JOIN itens i ON di.id_item = i.id
+                WHERE u.email = :email 
+                GROUP BY nome, status, TO_CHAR(doa.criado_em, 'DD/MM/YYYY') 
+                ORDER BY dataRecebida DESC
+            ";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':email' => $email]);
 

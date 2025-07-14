@@ -272,15 +272,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(response => response.json())
         .then(response => response.dados)
         .then(dados => {
-            //console.log(dados)
+            console.log(dados)
             for(doacao of dados) {
                 console.log(doacao)
+                const itensDoacao = doacao.itemquantidade.split(',');
                 const doacaoElemento = document.createElement("div");
                 doacaoElemento.classList.add("doacao");
                 doacaoElemento.innerHTML = `
-                    <p><span>Nome: ${doacao.nome}</span> <span>Data Registrada: <span class="dataRecebida">${doacao.datarecebida}</span></span> <span>Status: ${doacao.status}</span></p>
+                    <div class="cabecalho-doacao">                        
+                        <span><strong>Doação Recebida em:</strong> <span class="dataRecebida">${doacao.datarecebida}</span></span>                         
+                    </div>
+                    <div class="detalhes-doacao --hide ">
+                        <p><span><strong>Nome do Doador:</strong> ${doacao.nome ?? 'Não disponível'}</span></p>
+                        <p><span><strong>Status:</strong> ${doacao.status == 'P'? 'Pendente' : 'Concluída'}</span></p>
+                        <div class="itensRecebidos"></div>
+                    </div>
                 `;
-
+                 //<p><span>Nome: ${doacao.nome}</span> <span>Data Registrada: <span class="dataRecebida">${doacao.datarecebida}</span></span> <span>Status: ${doacao.status}</span></p>
+                
+                for(elemento of itensDoacao) {
+                    const itemQuantidade = elemento.split(' - ');
+                    const item = itemQuantidade[0];
+                    const quantidade = itemQuantidade[1];
+                    doacaoElemento.querySelector(".itensRecebidos").innerHTML += `
+                        <div class="itemRecebido">
+                            <p><span><strong>Item:</strong> ${item ?? 'Não disponível'} <strong>Quantidade:</strong> ${quantidade}</span></p>
+                            <p><span></span></p>
+                        </div>                        
+                    `;
+                }
+                doacaoElemento.querySelector('.cabecalho-doacao').addEventListener('click', () => {
+                    doacaoElemento.querySelector('.detalhes-doacao').classList.toggle('--hide');
+                });
                 document.querySelector(".listaDoacao").appendChild(doacaoElemento);
             }
         });
