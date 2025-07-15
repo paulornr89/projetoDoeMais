@@ -149,7 +149,7 @@
                     echo '<li><a href="./listarInstituicoes.php">Visualizar Instituições</a></li>';
                 }   
                 ?>
-            <li><a href="../../../public/logout.php">Sair</a></li>
+            <li><a href="../../public/logout.php">Sair</a></li>
         </ul>
     </nav>
     <script type="text/javascript" src="./mainItens.js"></script>
